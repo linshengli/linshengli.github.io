@@ -1089,6 +1089,144 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/2018-03-06-随手/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/2018-03-06-随手/" itemprop="url">常用代码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T00:00:00+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="mvn"><a href="#mvn" class="headerlink" title="mvn"></a>mvn</h3><p>使用mvn生成spring boot项目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mvn clean</span><br><span class="line">mvn build</span><br><span class="line">mvn install</span><br><span class="line">mvn package</span><br><span class="line">mvn test</span><br><span class="line">mvn compile</span><br></pre></td></tr></table></figure>
+<h3 id="usr的权限问题"><a href="#usr的权限问题" class="headerlink" title="/usr的权限问题"></a>/usr的权限问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al /usr</span><br><span class="line">drwsr-xr-x  11 root root  4096 3月   8 10:30 .</span><br><span class="line">drwxr-xr-x  25 root root  4096 3月   6 15:55 ..</span><br><span class="line">drwsr-xr-x   2 root root 69632 3月   8 11:45 bin</span><br><span class="line">drwsr-xr-x   2 root root  4096 11月 30 22:46 games</span><br><span class="line">drwsr-xr-x  67 root root 20480 2月  28 15:20 include</span><br><span class="line">drwsr-xr-x 176 root root 12288 3月   6 16:16 lib</span><br><span class="line">drwsr-xr-x  11 root root  4096 11月  3 10:24 local</span><br><span class="line">drwsr-xr-x   3 root root  4096 7月  20  2016 locale</span><br><span class="line">drwsr-xr-x   2 root root 12288 3月   8 11:45 sbin</span><br><span class="line">drwsr-xr-x 363 root root 12288 3月   6 16:16 share</span><br><span class="line">drwsr-xr-x   7 root root  4096 3月   8 11:46 src</span><br></pre></td></tr></table></figure>
+<p>昨天一不小心将整个/usr权限改为777了，导致WiFi不能连接，sudo不能运行。也是醉了。</p>
+<ol>
+<li>sudo不能运行的原因。<br>/usr/bin/sudo 的权限设置错误。<br>进入su -<br>然后修改其权限:<br>chown root:root sudo #修改为root组的root用户<br>chmod 4755 sudo #修改权限<br>之后再进入/usr/lib/sudo/<br>chown root:root sudoers.so<br>chmod 4755 sudo<br>到此sudo 能够运行了。</li>
+<li><p>启动Soft update出错<br>主要是/usr/lib/dbus-1.0/dbus-daemon-lauch-helper权限设置出错。<br>改为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwsr-xr-- 1 root messagebus ....</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于/usr目录下的其他软件<br>sudo chmod -R 755 *</p>
+</li>
+<li><p>有可能/var/log/cups的文件不断增大，甚至可能是到达几十G，这有可能是/usr/lib/cups/notifier/dbus权限设置不对(具体的可以看cups的error_log文件)，正确的权限是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x  1 daemon root 14328 2月  20 01:51 dbus</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>修改好就可以了。</p>
+<ol start="4">
+<li>重启，没有问题了</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/2018-03-06-spring-data-mongodb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1626,144 +1764,6 @@
 <p>当出现异常的时候，情况比较复杂，分有没有around方法讨论，因为如果有around则around当中理因处理该Exception，如果没有处理，则该exception会抛出到上一层，然后强行结束该around的advice，接着执行After方法，然后是afterthrowing方法。如果around执行了异常处理，那么afterthrow不会执行。</p>
 <p>总结：around在before之前，after（所有类别after方法）之前执行。<br>afterreturing和afterthrowing在after之后执行。<br>[TODO poingcut的语句编写 AOP通过代理实现的原理]<br><a href="https://www.cnblogs.com/bigben0123/p/7779357.html" target="_blank" rel="noopener">详细用法参考</a></p>
 <h2 id="spring启动的顺序"><a href="#spring启动的顺序" class="headerlink" title="spring启动的顺序"></a>spring启动的顺序</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/2018-03-06-随手/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tbxsx">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/06/2018-03-06-随手/" itemprop="url">常用代码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T00:00:00+08:00">
-                2018-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="mvn"><a href="#mvn" class="headerlink" title="mvn"></a>mvn</h3><p>使用mvn生成spring boot项目：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mvn clean</span><br><span class="line">mvn build</span><br><span class="line">mvn install</span><br><span class="line">mvn package</span><br><span class="line">mvn test</span><br><span class="line">mvn compile</span><br></pre></td></tr></table></figure>
-<h3 id="usr的权限问题"><a href="#usr的权限问题" class="headerlink" title="/usr的权限问题"></a>/usr的权限问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al /usr</span><br><span class="line">drwsr-xr-x  11 root root  4096 3月   8 10:30 .</span><br><span class="line">drwxr-xr-x  25 root root  4096 3月   6 15:55 ..</span><br><span class="line">drwsr-xr-x   2 root root 69632 3月   8 11:45 bin</span><br><span class="line">drwsr-xr-x   2 root root  4096 11月 30 22:46 games</span><br><span class="line">drwsr-xr-x  67 root root 20480 2月  28 15:20 include</span><br><span class="line">drwsr-xr-x 176 root root 12288 3月   6 16:16 lib</span><br><span class="line">drwsr-xr-x  11 root root  4096 11月  3 10:24 local</span><br><span class="line">drwsr-xr-x   3 root root  4096 7月  20  2016 locale</span><br><span class="line">drwsr-xr-x   2 root root 12288 3月   8 11:45 sbin</span><br><span class="line">drwsr-xr-x 363 root root 12288 3月   6 16:16 share</span><br><span class="line">drwsr-xr-x   7 root root  4096 3月   8 11:46 src</span><br></pre></td></tr></table></figure>
-<p>昨天一不小心将整个/usr权限改为777了，导致WiFi不能连接，sudo不能运行。也是醉了。</p>
-<ol>
-<li>sudo不能运行的原因。<br>/usr/bin/sudo 的权限设置错误。<br>进入su -<br>然后修改其权限:<br>chown root:root sudo #修改为root组的root用户<br>chmod 4755 sudo #修改权限<br>之后再进入/usr/lib/sudo/<br>chown root:root sudoers.so<br>chmod 4755 sudo<br>到此sudo 能够运行了。</li>
-<li><p>启动Soft update出错<br>主要是/usr/lib/dbus-1.0/dbus-daemon-lauch-helper权限设置出错。<br>改为:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwsr-xr-- 1 root messagebus ....</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对于/usr目录下的其他软件<br>sudo chmod -R 755 *</p>
-</li>
-<li><p>有可能/var/log/cups的文件不断增大，甚至可能是到达几十G，这有可能是/usr/lib/cups/notifier/dbus权限设置不对(具体的可以看cups的error_log文件)，正确的权限是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x  1 daemon root 14328 2月  20 01:51 dbus</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>修改好就可以了。</p>
-<ol start="4">
-<li>重启，没有问题了</li>
-</ol>
-
           
         
       
