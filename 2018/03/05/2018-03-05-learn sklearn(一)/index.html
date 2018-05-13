@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="使用sklearn的iris数据，用svm模型进行拟合并使用cross validation进行模型的选择和参数调优。 数据sklearn中有大量的数据，保存在sklearn的datasets包中。sklearn的datasets包中提供了载入本地小数目数据(load_&amp;lt;dataset_name&amp;gt;函数),本地生成数据(make_&amp;lt;dataset_name&amp;gt;函数),网上下载公">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/img/18-03-05/model-selection.png">
-<meta property="og:updated_time" content="2018-03-08T09:30:00.702Z">
+<meta property="og:image" content="http://yoursite.com/public/images/18-03-05/model-selection.png">
+<meta property="og:updated_time" content="2018-05-13T16:45:36.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="learn sklearn(一)">
 <meta name="twitter:description" content="使用sklearn的iris数据，用svm模型进行拟合并使用cross validation进行模型的选择和参数调优。 数据sklearn中有大量的数据，保存在sklearn的datasets包中。sklearn的datasets包中提供了载入本地小数目数据(load_&amp;lt;dataset_name&amp;gt;函数),本地生成数据(make_&amp;lt;dataset_name&amp;gt;函数),网上下载公">
-<meta name="twitter:image" content="http://yoursite.com/img/18-03-05/model-selection.png">
+<meta name="twitter:image" content="http://yoursite.com/public/images/18-03-05/model-selection.png">
 
 
 
@@ -314,7 +314,7 @@
 <h3 id="网上下载数据"><a href="#网上下载数据" class="headerlink" title="网上下载数据"></a>网上下载数据</h3><p>方法有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">datasets.fetch_20newsgroups([data_home, …])	Load the filenames and data from the 20 newsgroups dataset.</span><br><span class="line">datasets.fetch_20newsgroups_vectorized([…])	Load the 20 newsgroups dataset and transform it into tf-idf vectors.</span><br><span class="line">datasets.fetch_california_housing([…])	Loader for the California housing dataset from StatLib.</span><br><span class="line">datasets.fetch_covtype([data_home, …])	Load the covertype dataset, downloading it if necessary.</span><br><span class="line">datasets.fetch_kddcup99([subset, data_home, …])	Load and return the kddcup 99 dataset (classification).</span><br><span class="line">datasets.fetch_lfw_pairs([subset, …])	Loader for the Labeled Faces in the Wild (LFW) pairs dataset</span><br><span class="line">datasets.fetch_lfw_people([data_home, …])	Loader for the Labeled Faces in the Wild (LFW) people dataset</span><br><span class="line">datasets.fetch_mldata(dataname[, …])	Fetch an mldata.org data set</span><br><span class="line">datasets.fetch_olivetti_faces([data_home, …])	Loader for the Olivetti faces data-set from AT&amp;T.</span><br><span class="line">datasets.fetch_rcv1([data_home, subset, …])	Load the RCV1 multilabel dataset, downloading it if necessary.</span><br><span class="line">datasets.fetch_species_distributions([…])	Loader for species distribution dataset from Phillips et.</span><br></pre></td></tr></table></figure></p>
 <p>下载下来的数据会放在<code>~/scikit_learn_data</code>目录下，如果想保存到其他的地方，可以传入data_home参数，作为下载的目标位置。</p>
 <p>来源 <a href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets" target="_blank" rel="noopener">sklearn</a></p>
-<h2 id="模型的选择与评估"><a href="#模型的选择与评估" class="headerlink" title="模型的选择与评估"></a>模型的选择与评估</h2><p>sklearn官网给出的模型选择参考：<br><img src="/img/18-03-05/model-selection.png" alt="Model-Selection"></p>
+<h2 id="模型的选择与评估"><a href="#模型的选择与评估" class="headerlink" title="模型的选择与评估"></a>模型的选择与评估</h2><p>sklearn官网给出的模型选择参考：<br><img src="/public/images/18-03-05/model-selection.png" alt="Model-Selection"></p>
 <h1 id="常用模型"><a href="#常用模型" class="headerlink" title="常用模型"></a>常用模型</h1><hr>
 <h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2><h3 id="常用线性模型"><a href="#常用线性模型" class="headerlink" title="常用线性模型"></a>常用线性模型</h3><p>sklearn.linear_model中包含了sklearn的主要线性模型函数。主要包括Linear_Regression线性回归，Ridge岭回归，Lasso回归,BayesianRidge贝叶斯脊回归(用于回归问题的贝叶斯方法), LogisticRegression(逻辑回归),Stochastic Gradient Descent(SGD随机梯度下降法),Elastic Net (弹性网络回归)。</p>
 <h3 id="模型学习从三个角度理解："><a href="#模型学习从三个角度理解：" class="headerlink" title="模型学习从三个角度理解："></a>模型学习从三个角度理解：</h3><ul>
@@ -370,8 +370,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/06/2018-03-06-spring-data-mongodb/" rel="prev" title="spring-data-mongodb">
-                spring-data-mongodb <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/06/2018-03-06-spring-IoC-AOP/" rel="prev" title="spring-IoC-AOP">
+                spring-IoC-AOP <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
