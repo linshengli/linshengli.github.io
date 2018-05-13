@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="看到阮一峰大神的2012中的Blog中有着一段：  第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。                                          自我感觉了一下，昨天才建立好自己的blo">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/public/images/17-10-17/github_pages.png">
-<meta property="og:image" content="http://yoursite.com/public/images/17-10-17/github_pages_1.png">
-<meta property="og:image" content="http://yoursite.com/public/images/17-10-17/github_pages_2.png">
-<meta property="og:updated_time" content="2018-05-13T16:44:26.360Z">
+<meta property="og:image" content="http://yoursite.com/images/17-10-17/github_pages.png">
+<meta property="og:image" content="http://yoursite.com/images/17-10-17/github_pages_1.png">
+<meta property="og:image" content="http://yoursite.com/images/17-10-17/github_pages_2.png">
+<meta property="og:updated_time" content="2018-05-13T16:55:30.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建个人网站之路">
 <meta name="twitter:description" content="看到阮一峰大神的2012中的Blog中有着一段：  第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。                                          自我感觉了一下，昨天才建立好自己的blo">
-<meta name="twitter:image" content="http://yoursite.com/public/images/17-10-17/github_pages.png">
+<meta name="twitter:image" content="http://yoursite.com/images/17-10-17/github_pages.png">
 
 
 
@@ -312,7 +312,7 @@
 <h2 id="github-Pages和Jekyll介绍"><a href="#github-Pages和Jekyll介绍" class="headerlink" title="github Pages和Jekyll介绍"></a>github Pages和Jekyll介绍</h2><p>我们都知道github是一个代码托管网站，从个人到大公司都可以将开源项目放在上面托管，简直就是程序员们的天堂，妈妈再也不用担心我代码写不出来了。但是如果紧紧是代码放在上面，没有交流讨论，开源就失去了它的价值了，而想要交流就必须先了解，因此除了README文件之后，github还推出了github pages项目。通过github pages项目可以将项目内容通过正常的网页展示，并给出一定的介绍，相当于代码和人类思维之间的润滑剂，让你可以在不看完代码之前可以对项目功能，各部分作用之间有一定了解。由于gitgithub pages给你pages允许用户自定义项目首页，用来替代默认的源码列表，所以，github Pages可以也被认为是用户编写的、托管在github上的静态网页,并且有意思的一点是，你的源码传上去之后，github可以内置的模板解析网页，也可以不使用内置的，而使用Jekyll生成网页再展示。</p>
 <p><strong>Jekyll</strong>（发音/‘dʒiːk əl/，”杰克尔”）是一个静态站点生成器，它会根据网页源码生成静态文件。它提供了模板、变量、插件等功能，所以实际上可以用来编写整个网站。当然现在静态站点生成器还有比如Hugo，Hexo等。</p>
 <p>说人话就是，如果把搭建blog比喻为唱戏，那么github pages给你提供免费的场地，而Jekyll给你提供唱戏所需要的戏台，给你服装，而你只需要专注于唱戏，也就是写blog。</p>
-<h2 id="使用github-pages。"><a href="#使用github-pages。" class="headerlink" title="使用github pages。"></a>使用github pages。</h2><p>那么首先我们要先找场地。首先在github上创建一个项目，如果你在github上的ID为abc,那么创建一个abc.github.io的项目。比如：<img src="/public/images/17-10-17/github_pages.png" alt="github_pages"><br>我的ID为linshengli，因此创建了一个linshengli.github.io的项目，然后，设置该项目的github pages:setting-&gt;github pages中设置source为master branch。<img src="/public/images/17-10-17/github_pages_1.png" alt="github_pages_1">至此，我们已经将github pages的大半事情做好了，接下来，你可以进入abc.github.io，看到的大概是<img src="/public/images/17-10-17/github_pages_2.png" alt="github_pages_2">至此，大概可以理解为戏台已经搭建好了。</p>
+<h2 id="使用github-pages。"><a href="#使用github-pages。" class="headerlink" title="使用github pages。"></a>使用github pages。</h2><p>那么首先我们要先找场地。首先在github上创建一个项目，如果你在github上的ID为abc,那么创建一个abc.github.io的项目。比如：<img src="/images/17-10-17/github_pages.png" alt="github_pages"><br>我的ID为linshengli，因此创建了一个linshengli.github.io的项目，然后，设置该项目的github pages:setting-&gt;github pages中设置source为master branch。<img src="/images/17-10-17/github_pages_1.png" alt="github_pages_1">至此，我们已经将github pages的大半事情做好了，接下来，你可以进入abc.github.io，看到的大概是<img src="/images/17-10-17/github_pages_2.png" alt="github_pages_2">至此，大概可以理解为戏台已经搭建好了。</p>
 <h2 id="使用Jekyll生成器"><a href="#使用Jekyll生成器" class="headerlink" title="使用Jekyll生成器"></a>使用Jekyll生成器</h2><p>接下来我们来准备写blog需要的一些其他东西。因为我们的blog肯定是使用文本编辑器在本地写好之后，推送到github的仓库中去，然后，github的Jekyll生成器根据我们项目文件生成我们的blog的网页。而比如说blog的功能，样式，我们都可以通过Jekyll的非正文内容配置得到。</p>
 <h3 id="博客主题"><a href="#博客主题" class="headerlink" title="博客主题"></a>博客主题</h3><p>博客的主题和功能必定为大家很在意的一点，这些我们都可以通过下载适当的Jekyll模板实现。推荐一下主题：</p>
 <ul>

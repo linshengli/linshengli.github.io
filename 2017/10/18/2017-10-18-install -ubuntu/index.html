@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="今天下午想使用Ubuntu的时候，突然发现Ubuntu系统进不去了，出现 1Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)  双系统中windows没有收到影响，但是Ubuntu确实怎样也进不去，只能进入grub中，但是对于grub又不了解，折腾了半天，断电了好多次，还是没有办法，只好重装">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/public/images/17-10-18/error.png">
-<meta property="og:updated_time" content="2018-05-13T16:44:45.246Z">
+<meta property="og:image" content="http://yoursite.com/images/17-10-18/error.png">
+<meta property="og:updated_time" content="2018-05-13T16:55:32.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重装linux">
 <meta name="twitter:description" content="今天下午想使用Ubuntu的时候，突然发现Ubuntu系统进不去了，出现 1Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)  双系统中windows没有收到影响，但是Ubuntu确实怎样也进不去，只能进入grub中，但是对于grub又不了解，折腾了半天，断电了好多次，还是没有办法，只好重装">
-<meta name="twitter:image" content="http://yoursite.com/public/images/17-10-18/error.png">
+<meta name="twitter:image" content="http://yoursite.com/images/17-10-18/error.png">
 
 
 
@@ -304,7 +304,7 @@
       
         <p>今天下午想使用Ubuntu的时候，突然发现Ubuntu系统进不去了，出现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)</span><br></pre></td></tr></table></figure>
-<p><img src="/public/images/17-10-18/error.png" alt="Error"></p>
+<p><img src="/images/17-10-18/error.png" alt="Error"></p>
 <p>双系统中windows没有收到影响，但是Ubuntu确实怎样也进不去，只能进入grub中，但是对于grub又不了解，折腾了半天，断电了好多次，还是没有办法，只好重装系统了。前面也有次是这样的，不了解grub，不了解linux启动的顺序，导致只能重装系统，因此，这次教训之后，准备认真了解一下grub和linux启动的顺序原理。</p>
 <h2 id="了解Grub"><a href="#了解Grub" class="headerlink" title="了解Grub"></a>了解Grub</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">grub rescue&gt;root=(hd0,x)</span><br><span class="line"></span><br><span class="line">grub rescue&gt;prefix=/boot/grub</span><br><span class="line"></span><br><span class="line">grub rescue&gt;set root=(hd0,x)</span><br><span class="line"></span><br><span class="line">grub rescue&gt;set prefix=(hd0,x)/boot/grub</span><br><span class="line"></span><br><span class="line">grub rescue&gt;insmod normal</span><br><span class="line"></span><br><span class="line">rescue&gt;normal --------&gt;若出现启动菜单，按c进入命令行模式</span><br><span class="line"></span><br><span class="line">rescue&gt;linux /boot/vmlinuz-xxx-xxx root=/dev/sdax</span><br><span class="line"></span><br><span class="line">rescue&gt;initrd /boot/initrd.img-xxx-xxx</span><br><span class="line"></span><br><span class="line">rescue&gt;boot</span><br></pre></td></tr></table></figure>
 <ol>
