@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,spring," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="spring-IoC/DIIoC(Inversion of Control)控制反转，IoC不是一种技术，本身是一种思想。想要理解IoC，首先需要理解两个词，Control(控制)和Inversion(反转)。 Control(控制)什么是控制？以代码为例:12345678910111213141516@RestControllerpublic class BookController &amp;#123">
+<meta name="keywords" content="Java,spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-IoC-AOP">
+<meta property="og:url" content="http://yoursite.com/2018/03/06/2018-03-06-spring-IoC-AOP/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="spring-IoC/DIIoC(Inversion of Control)控制反转，IoC不是一种技术，本身是一种思想。想要理解IoC，首先需要理解两个词，Control(控制)和Inversion(反转)。 Control(控制)什么是控制？以代码为例:12345678910111213141516@RestControllerpublic class BookController &amp;#123">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-03-08T15:39:20.387Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring-IoC-AOP">
+<meta name="twitter:description" content="spring-IoC/DIIoC(Inversion of Control)控制反转，IoC不是一种技术，本身是一种思想。想要理解IoC，首先需要理解两个词，Control(控制)和Inversion(反转)。 Control(控制)什么是控制？以代码为例:12345678910111213141516@RestControllerpublic class BookController &amp;#123">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/06/2018-03-06-spring-IoC-AOP/"/>
+
+
+
+
+
+  <title>spring-IoC-AOP | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/2018-03-06-spring-IoC-AOP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">spring-IoC-AOP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T00:00:00+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="spring-IoC-DI"><a href="#spring-IoC-DI" class="headerlink" title="spring-IoC/DI"></a>spring-IoC/DI</h3><p>IoC(Inversion of Control)控制反转，IoC不是一种技术，本身是一种思想。想要理解IoC，首先需要理解两个词，Control(控制)和Inversion(反转)。</p>
+<h4 id="Control-控制"><a href="#Control-控制" class="headerlink" title="Control(控制)"></a>Control(控制)</h4><p>什么是控制？以代码为例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class BookController &#123;</span><br><span class="line"></span><br><span class="line">    //@AutoWired</span><br><span class="line">    private BookService bookService;</span><br><span class="line">    public BookController()&#123;</span><br><span class="line">        this.bookService = new BookService();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @ResponseBody</span><br><span class="line">    @RequestMapping(value = &quot;bookIds&quot;,method = RequestMethod.GET)</span><br><span class="line">    public List&lt;Book&gt; bookIds()&#123;</span><br><span class="line">        List&lt;Book&gt; list = bookService.fetchAll();</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在这段代码中，BookController需要用到BookService，因此在前者中有一个后者的实例，换句话说，BookController可以通过这个实例控制BookService，这就是控制。而从另一个角度来说，也是BookController依赖于BookService（因为没有BookService，BookController的逻辑也不能实现）。</p>
+<p>控制和依赖是共存的，控制也不局限于对另一个类的控制，还可以是文件，datasource等。</p>
+<h4 id="Inversion-反转"><a href="#Inversion-反转" class="headerlink" title="Inversion(反转)"></a>Inversion(反转)</h4><p>什么是反转？我们先考虑什么是“正转”？<br><em>注意无论是“正转”还是反转，都是相对于BookController类来说的</em><br>还是以上面的代码为例，上面的代码中，BookController是占主要的地位的类，BookService只是BookController的一部分，由BookController控制BookService，这可以理解为“正转”，因为这是占主导地位的类控制占次要地位的类(也可以理解为依赖类控制被依赖的类)，BookController主动new一个BookService的实例。</p>
+<p>那么反转呢？反转就是在BookController和BookService中，BookController由原来的主动new一个对象，变为被动接受一个对象。就好像说，有一个第三方，在BookController需要一个BookService的时候，马上送上一个BookService。而这个第三方，就是spring容器。</p>
+<h4 id="DI-Dependency-Injection"><a href="#DI-Dependency-Injection" class="headerlink" title="DI(Dependency Injection)"></a>DI(Dependency Injection)</h4><p>依赖注入其实就是IoC的另一种说法。我们还是从两个方面来说什么是依赖注入。<br>什么是依赖：IoC控制的另一种说法，可以参考第一点<br>什么是注入：IoC容器给BookController送上一个BookService实例即可以视为注入。</p>
+<h3 id="AOP-Aspect-Oriented-Programming"><a href="#AOP-Aspect-Oriented-Programming" class="headerlink" title="AOP(Aspect-Oriented Programming)"></a>AOP(Aspect-Oriented Programming)</h3><h4 id="概念理解，和OOP对比。"><a href="#概念理解，和OOP对比。" class="headerlink" title="概念理解，和OOP对比。"></a>概念理解，和OOP对比。</h4><p>AOP面向切面编程。面向对象编程的核心是对象，一切皆对象，同样的，面向切面编程，核心是切面。想要理解什么是AOP，首先需要理解切面。</p>
+<p><em>什么是切面?</em></p>
+<p>OOP要求我们把功能分散到单独的类中去，做到一个类做一件事。但是当许多类都分散开来的时候，也会增加类的复杂性。一个例子就是：如果所有的类都有一个打印日志的操作，要么在每个类中重复一段打印日志的代码（重复代码）；要不就是所有需要打印日志的类都依赖于一个log类（会增加所有这些类对于log类的依赖，重复逻辑）。如何才能去掉这些重复代码呢？AOP就是用来解决这个问题的，将log的方法视作一个切面，所有log操作只需要通过AOP织入即可，代码只需要写一份。<br><em>切面就是上面的log</em></p>
+<p>所谓的面向切面编程，就是根据切面，在代码的适当位置（切入点）动态的插入适当的代码让其运行。</p>
+<blockquote>
+<p>AOP:如果你有一个函数要测时间，那你就在函数开始和结束的地方各打一个时间戳，然后计算打印就行了。但如果你有一批函数，你要每个函数都这么干的话，明天老板说该上线了把debug代码都去掉怎么办，明天CTO说控制台输出太low了要改成发短信怎么办。所以你需要在一个统一的地方写这些东西。AOP就是通过配置，让符合某种条件的函数在开始和结束的时候都执行你规定的逻辑。 –摘抄自知乎</p>
+</blockquote>
+<p><a href="https://www.zhihu.com/question/24863332" target="_blank" rel="noopener">AOP理解</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Aspect(切面):从所有类中横向找出的共同逻辑</span><br><span class="line">Join point(连接点):从程序中找出的可以拦截点(spring中只可以是method，不能是构造器) </span><br><span class="line">Advice: 需要动态插入的逻辑代码（有after，before，around等多种）</span><br><span class="line">Pointcut: 切入点，可以理解为找出来的特定的连接点，Advice在只能在Pointcut中被插入。</span><br></pre></td></tr></table></figure>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>ExampleController类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.example.demo.web;</span><br><span class="line"></span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class Example &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;/&quot;)</span><br><span class="line">    public String home() &#123;</span><br><span class="line">        return &quot;Hello World!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Aspect类:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">package com.example.demo.Aop;</span><br><span class="line"></span><br><span class="line">import org.aspectj.lang.JoinPoint;</span><br><span class="line">import org.aspectj.lang.ProceedingJoinPoint;</span><br><span class="line">import org.aspectj.lang.annotation.*;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import org.springframework.web.context.request.RequestContextHolder;</span><br><span class="line">import org.springframework.web.context.request.ServletRequestAttributes;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">@Aspect</span><br><span class="line">@Component</span><br><span class="line">public class WebLogAspect &#123;</span><br><span class="line">    protected static org.slf4j.Logger logger = LoggerFactory.getLogger(WebLogAspect.class);</span><br><span class="line"></span><br><span class="line">//    @Pointcut(&quot;execution(public * com.example.demo..*.*(..))&quot;)</span><br><span class="line">    @Pointcut(&quot;execution(public * com.example.demo.web.Example.home(..))&quot;)</span><br><span class="line">    public void webLog() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Before(&quot;webLog()&quot;)</span><br><span class="line">    public void doBefore(JoinPoint joinPoint) throws Throwable &#123;</span><br><span class="line">        System.out.println( &quot;进入doBefore切面&quot;);</span><br><span class="line">        // 接收到请求，记录请求内容</span><br><span class="line">        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();</span><br><span class="line">        HttpServletRequest request = attributes.getRequest();</span><br><span class="line"></span><br><span class="line">        // 记录下请求内容</span><br><span class="line">        logger.info(&quot;URL : &quot; + request.getRequestURL().toString());</span><br><span class="line">        logger.info(&quot;HTTP_METHOD : &quot; + request.getMethod());</span><br><span class="line">        logger.info(&quot;IP : &quot; + request.getRemoteAddr());</span><br><span class="line">        logger.info(&quot;CLASS_METHOD : &quot; + joinPoint.getSignature().getDeclaringTypeName() + &quot;.&quot; + joinPoint.getSignature().getName());</span><br><span class="line">        logger.info(&quot;ARGS : &quot; + Arrays.toString(joinPoint.getArgs()));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Around(&quot;webLog()&quot;)</span><br><span class="line">    public Object around(ProceedingJoinPoint joinPoint) throws Throwable&#123;</span><br><span class="line">        System.out.println( &quot;around the aspect&quot;);</span><br><span class="line">        Object o = joinPoint.proceed();</span><br><span class="line">        System.out.println( &quot;around the aspect1&quot;);</span><br><span class="line">        return o;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @AfterReturning(returning = &quot;ret&quot;, pointcut = &quot;webLog()&quot;)</span><br><span class="line">    public void doAfterReturning(Object ret) throws Throwable &#123;</span><br><span class="line">        // 处理完请求，返回内容</span><br><span class="line">        logger.info(&quot;RESPONSE : &quot; + ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">around the aspect</span><br><span class="line">进入doBefore切面</span><br><span class="line">2018-03-07 16:23:54.237  INFO 22622 --- [nio-8888-exec-1] com.example.demo.Aop.WebLogAspect        : URL : http://localhost:8888/</span><br><span class="line">2018-03-07 16:23:54.238  INFO 22622 --- [nio-8888-exec-1] com.example.demo.Aop.WebLogAspect        : HTTP_METHOD : GET</span><br><span class="line">2018-03-07 16:23:54.238  INFO 22622 --- [nio-8888-exec-1] com.example.demo.Aop.WebLogAspect        : IP : 127.0.0.1</span><br><span class="line">2018-03-07 16:23:54.239  INFO 22622 --- [nio-8888-exec-1] com.example.demo.Aop.WebLogAspect        : CLASS_METHOD : com.example.demo.web.Example.home</span><br><span class="line">2018-03-07 16:23:54.239  INFO 22622 --- [nio-8888-exec-1] com.example.demo.Aop.WebLogAspect        : ARGS : []</span><br><span class="line">around the aspect1</span><br></pre></td></tr></table></figure></p>
+<p>可见执行顺序是:<br>Around的ProceedingJoinPoint.proceed()前的方法，Before方法，被织入的方法，Around的proceed之后的方法，After执行，然后是AfterReturing方法。</p>
+<p>除了@Around外，每个方法里都可以加或者不加参数JoinPoint，如果有用JoinPoint的地方就加，不加也可以，JoinPoint里包含了类名、被切面的方法名，参数等属性，可供读取使用。@Around参数必须为ProceedingJoinPoint，pjp.proceed相应于执行被切面的方法。@AfterReturning方法里，可以加returning = “XXX”，XXX即为在controller里方法的返回值。</p>
+<p>当出现异常的时候，情况比较复杂，分有没有around方法讨论，因为如果有around则around当中理因处理该Exception，如果没有处理，则该exception会抛出到上一层，然后强行结束该around的advice，接着执行After方法，然后是afterthrowing方法。如果around执行了异常处理，那么afterthrow不会执行。</p>
+<p>总结：around在before之前，after（所有类别after方法）之前执行。<br>afterreturing和afterthrowing在after之后执行。<br>[TODO poingcut的语句编写 AOP通过代理实现的原理]<br><a href="https://www.cnblogs.com/bigben0123/p/7779357.html" target="_blank" rel="noopener">详细用法参考</a></p>
+<h2 id="spring启动的顺序"><a href="#spring启动的顺序" class="headerlink" title="spring启动的顺序"></a>spring启动的顺序</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/06/2018-03-06-随手/" rel="next" title="常用代码">
+                <i class="fa fa-chevron-left"></i> 常用代码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/06/2018-03-06-java-web/" rel="prev" title="企业级引用系统开发技术(1)">
+                企业级引用系统开发技术(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Tbxsx</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-IoC-DI"><span class="nav-number">1.</span> <span class="nav-text">spring-IoC/DI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Control-控制"><span class="nav-number">1.1.</span> <span class="nav-text">Control(控制)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inversion-反转"><span class="nav-number">1.2.</span> <span class="nav-text">Inversion(反转)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DI-Dependency-Injection"><span class="nav-number">1.3.</span> <span class="nav-text">DI(Dependency Injection)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP-Aspect-Oriented-Programming"><span class="nav-number">2.</span> <span class="nav-text">AOP(Aspect-Oriented Programming)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念理解，和OOP对比。"><span class="nav-number">2.1.</span> <span class="nav-text">概念理解，和OOP对比。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">2.2.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring启动的顺序"><span class="nav-number"></span> <span class="nav-text">spring启动的顺序</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tbxsx</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

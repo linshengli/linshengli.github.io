@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,Problem," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今天下午想使用Ubuntu的时候，突然发现Ubuntu系统进不去了，出现 1Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)  双系统中windows没有收到影响，但是Ubuntu确实怎样也进不去，只能进入grub中，但是对于grub又不了解，折腾了半天，断电了好多次，还是没有办法，只好重装">
+<meta name="keywords" content="Linux,Problem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重装linux">
+<meta property="og:url" content="http://yoursite.com/2017/10/18/2017-10-18-install -ubuntu/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天下午想使用Ubuntu的时候，突然发现Ubuntu系统进不去了，出现 1Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)  双系统中windows没有收到影响，但是Ubuntu确实怎样也进不去，只能进入grub中，但是对于grub又不了解，折腾了半天，断电了好多次，还是没有办法，只好重装">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/img/17-10-18/error.png">
+<meta property="og:updated_time" content="2018-03-05T15:57:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重装linux">
+<meta name="twitter:description" content="今天下午想使用Ubuntu的时候，突然发现Ubuntu系统进不去了，出现 1Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)  双系统中windows没有收到影响，但是Ubuntu确实怎样也进不去，只能进入grub中，但是对于grub又不了解，折腾了半天，断电了好多次，还是没有办法，只好重装">
+<meta name="twitter:image" content="http://yoursite.com/img/17-10-18/error.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/18/2017-10-18-install -ubuntu/"/>
+
+
+
+
+
+  <title>重装linux | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/18/2017-10-18-install -ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">重装linux</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-18T00:00:00+08:00">
+                2017-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天下午想使用Ubuntu的时候，突然发现Ubuntu系统进不去了，出现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)</span><br></pre></td></tr></table></figure>
+<p><img src="/img/17-10-18/error.png" alt="Error"></p>
+<p>双系统中windows没有收到影响，但是Ubuntu确实怎样也进不去，只能进入grub中，但是对于grub又不了解，折腾了半天，断电了好多次，还是没有办法，只好重装系统了。前面也有次是这样的，不了解grub，不了解linux启动的顺序，导致只能重装系统，因此，这次教训之后，准备认真了解一下grub和linux启动的顺序原理。</p>
+<h2 id="了解Grub"><a href="#了解Grub" class="headerlink" title="了解Grub"></a>了解Grub</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">grub rescue&gt;root=(hd0,x)</span><br><span class="line"></span><br><span class="line">grub rescue&gt;prefix=/boot/grub</span><br><span class="line"></span><br><span class="line">grub rescue&gt;set root=(hd0,x)</span><br><span class="line"></span><br><span class="line">grub rescue&gt;set prefix=(hd0,x)/boot/grub</span><br><span class="line"></span><br><span class="line">grub rescue&gt;insmod normal</span><br><span class="line"></span><br><span class="line">rescue&gt;normal --------&gt;若出现启动菜单，按c进入命令行模式</span><br><span class="line"></span><br><span class="line">rescue&gt;linux /boot/vmlinuz-xxx-xxx root=/dev/sdax</span><br><span class="line"></span><br><span class="line">rescue&gt;initrd /boot/initrd.img-xxx-xxx</span><br><span class="line"></span><br><span class="line">rescue&gt;boot</span><br></pre></td></tr></table></figure>
+<ol>
+<li>insmod [module]<br> Insert the dynamic GRUB module called module. </li>
+</ol>
+<p>按照需要加载grub的动态模块.例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">initrd normal</span><br></pre></td></tr></table></figure></p>
+<p>内核版本号 -xxx-xxx可以按Tab键查看后再手动补全。</p>
+<p>加载normal模块[需要normal.mod模块在目录grub/i386-pc下]。</p>
+<ol start="2">
+<li>root=/dev/sdax root (hd0,1)</li>
+</ol>
+<p>root 通常是指主 Linux 分区,将后面这些分区设为linux主分区。</p>
+<ol start="2">
+<li>linux</li>
+</ol>
+<p>Load a Linux kernel image from file. The rest of the line is passed verbatim as the kernel command-line. Any initrd must be reloaded after using this command (see initrd).<br>从文件中加载一个linux的镜像，这一行之后的命令都会按照字面意思被当做内核命令运行，比如说这里设置root=/dev/sdax，将/dev/sdax当做设备主分区。initrd必须在linux/kernel命令之后执行。</p>
+<ol start="3">
+<li>initrd /boot/initrd.img-xxx-xxx</li>
+</ol>
+<p>Load an initial ramdisk for a Linux kernel image, and set the appropriate parameters in the Linux setup area in memory. This may only be used after the linux command (see linux) has been run. See also GNU/Linux.<br>加载Linux格式的初始化虚拟盘。</p>
+<ol start="4">
+<li><p>kernel /vmlinuz root=/dev/hda5</p>
+<p> 尝试载入主引导影像文件。其它项将被作为内核的命令行参数而传递给内核。使用此命令以前，内核所用到的模块应该被重新载入。<br>Vmlinuz是内核。它从GRUB的根文件系统载入的，如(hd0,0)，（hd0,5）。同时，后面一个选项被传给内核。这里它指出当Linux内核载入时，内核的根文件系统应该是位于hda5，第一个IDE硬盘的第五个分区。</p>
+</li>
+<li><p>chainloader +1</p>
+</li>
+</ol>
+<p>Load file as a chain-loader. Like any other file loaded by the filesystem code, it can use the blocklist notation (see Block list syntax) to grab the first sector of the current partition with ‘+1’. If you specify the option –force, then load file forcibly, whether it has a correct signature or not. This is required when you want to load a defective boot loader, such as SCO UnixWare 7.1.<br>将指定的文件作为一个链式装载程序载入。为了获取在一个指定分区第一 扇区内的文件，使用+1作为文件名。这个命令一般在装在windows系统的时候使用，因为像linux ，kernel命令，加载的就是系统镜像，但是windows系统加载进来的部分就有自身的引导程序，所以，接下来的交给windows引导程序完成加载。</p>
+<ol start="6">
+<li>boot </li>
+</ol>
+<p>引导先前已经被指定并载入的操作系统或链式装载程序。</p>
+<h2 id="Grub修复引导"><a href="#Grub修复引导" class="headerlink" title="Grub修复引导"></a>Grub修复引导</h2><p>遇到不能进入系统，但是系统文件都没有什么问题的，可能只是引导项出问题了，比如说分区变更了或者uuid不对了，这个时候只需要使用grub重建引导项，分两种情况：</p>
+<ol>
+<li>只能够进入 grub rescue模式：</li>
+</ol>
+<p>寻找到linux系统的位置，假设为(hd0,msdos7),那么可以设置linux的主分区 1,2行，然后找到grub，设置prefix，3,4行，之后加载grub的normal模块，这样，就能够进入到grub的正常模式（6行）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">grub rescue&gt;root=(hd0,msdos7)</span><br><span class="line">grub rescue&gt;prefix=/boot/grub //grub路径设置</span><br><span class="line">grub rescue&gt;set root=(hd0,msdos7)</span><br><span class="line">grub rescue&gt;set prefix=(hd0,msdos7)/boot/grub</span><br><span class="line">grub rescue&gt;insmod normal //启动normal启动</span><br><span class="line">grub rescue&gt;normal</span><br></pre></td></tr></table></figure></p>
+<p>进入grub模式后，进入2。</p>
+<ol start="2">
+<li>进入grub模式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">按c键进入命令指示符模式</span><br><span class="line">grub &gt;set root=hd0,msdos7</span><br><span class="line">grub &gt;set prefix=(hd0,msdos7)/boot/grub</span><br><span class="line">grub &gt;linux /vmlinuz-xxx-xxx root=/dev/sda7 //里边的xxxx可以按Tab键，如果有acpi问题,在最后加一句acpi=off</span><br><span class="line">grub &gt;initrd /initrd.img-xxx-xxx</span><br><span class="line">grub &gt;boot</span><br></pre></td></tr></table></figure>
+<p>1行设置linux的主分区，2设置grub的路劲，3，4行负责加载linux的镜像，最后引导。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Problem/" rel="tag"># Problem</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/17/2017-10-17-blog-website/" rel="next" title="搭建个人网站之路">
+                <i class="fa fa-chevron-left"></i> 搭建个人网站之路
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/19/2017-10-19-jekyll_1/" rel="prev" title="Jekyll的使用">
+                Jekyll的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Tbxsx</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解Grub"><span class="nav-number">1.</span> <span class="nav-text">了解Grub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grub修复引导"><span class="nav-number">2.</span> <span class="nav-text">Grub修复引导</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tbxsx</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -260,7 +260,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-13T21:21:02+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-13T21:43:39+08:00">
                 2018-05-13
               </time>
             
@@ -344,9 +344,1467 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/03/2018-04-03-C++STL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/03/2018-04-03-C++STL/" itemprop="url">C++STL使用总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-03T00:00:00+08:00">
+                2018-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/2018-03-14-learn sklearn(二)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/14/2018-03-14-learn sklearn(二)/" itemprop="url">learn sklearn(二) 特征选取</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-14T00:00:00+08:00">
+                2018-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="特征选取"><a href="#特征选取" class="headerlink" title="特征选取"></a>特征选取</h2><p>概念:<br>    将数据集中与要预测的值没有因果关系或者因果关系不大，或者冗余的特征去除，选取出对要预测的值关系密切的特征。</p>
+<p>好处:<br>    性能提升/提高模型的准确率</p>
+<h3 id="sklearn的feature-selection模块"><a href="#sklearn的feature-selection模块" class="headerlink" title="sklearn的feature_selection模块"></a>sklearn的feature_selection模块</h3><h4 id="简单特征选取"><a href="#简单特征选取" class="headerlink" title="简单特征选取"></a>简单特征选取</h4><ul>
+<li><p>根据单个特征的在整个数据集中的方差直接选择</p>
+<p>  当某个特征在样例中方差越小时，也就是说它的一致性越高，对于整个的分类作用也就越小，当它小于 threshold时，我们就可以去除这个特征。</p>
+<p>  在sklearn中用来 VarianceThreshold 来提取。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.feature_selection import VarianceThreshold</span><br><span class="line">#定义特征矩阵(X)</span><br><span class="line">X = [[0, 0, 1], [0, 1, 0], [1, 0, 0], [0, 1, 1], [0, 1, 0], [0, 1, 1]]</span><br><span class="line">#如果一个特征出现的概率小于0.8，则删除其（注意：threshold是方差0.8是概率。根据 variance = p * (1 - p)计算）</span><br><span class="line">sel = VarianceThreshold(threshold=(0.8 * (1 - 0.8)))</span><br><span class="line"></span><br><span class="line">sel_X = sel.fit_transform(X)</span><br><span class="line">print(sel_X)</span><br><span class="line">[[0 1],</span><br><span class="line">[1 0],</span><br><span class="line">[0 0],</span><br><span class="line">[1 1],</span><br><span class="line">[1 0],</span><br><span class="line">[1 1]]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单变量特征选择:Univariate feature selection</p>
+<p>  上面的根据方差来选择特征显然太naive了，在单变量特征选择中，我们通过一些统计度量方法来选择。</p>
+<ul>
+<li><code>SelectKBest</code>:从特征值中选取K个最好的特征</li>
+<li><code>SelectPercentile</code>：从特征值中选取一定比例的特征</li>
+<li><p>对每个变量使用常用的单变量统计测试: 假阳性率(false positive rate)<code>SelectFpr</code>,伪发现率(false discovry rate)<code>SelectFdr</code>,或者族系误差(family wise error)<code>SelectFwe</code>。</p>
+<p>统计度量方法根据预测值可以分为两类：</p>
+</li>
+<li><p>回归: <code>f_regression</code>, <code>mutual_info_regression</code></p>
+</li>
+<li><p>分类: <code>chi2</code>, <code>f_classif</code>, <code>mutual_info_classif</code></p>
+<p>以SelectKBest为例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.feature_selection import SelectKBest,f_classif</span><br><span class="line">from sklearn import datasets</span><br><span class="line">#load data</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X,Y = iris.data,iris.target</span><br><span class="line"># 使用SelectKBest函数，统计度量方法为f_classif,选取3个特征值 </span><br><span class="line">Ksel = SelectKBest(f_classif, k=3).fit_transform(X, Y)</span><br><span class="line">print(Ksel.shape)</span><br></pre></td></tr></table></figure>
+<p>OutPut：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(150, 3)</span><br></pre></td></tr></table></figure>
+<p><a href="http://blog.csdn.net/jetFlow/article/details/78884619" target="_blank" rel="noopener">TODO 参考f_classif,f_regression的详细内容</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>//在接着介绍sklearn的feature_selection模块前，先介绍一下有关特征选取的常用的两个过程。</p>
+<h3 id="递归式特征消除-Univariate-feature-selection"><a href="#递归式特征消除-Univariate-feature-selection" class="headerlink" title="递归式特征消除:Univariate feature selection"></a>递归式特征消除:Univariate feature selection</h3><p>分两个部分介绍：</p>
+<ul>
+<li>子集搜索：递归式特征消除选择使用一个额外的估计器(这个估计器必须可以对每个特征赋予一定的权重)</li>
+<li>子集评价：通过<code>coef_</code>属性 或者<code>feature_importances_</code>属性获得每个特征的重要性，注意先归一化，去除掉最不重要的属性，知道满足要求。</li>
+</ul>
+<p>提供的recursive feature elimination (RFE)函数:</p>
+<pre><code>- `RFE`:自动寻找到要求到的feature数量。
+- `RFECV`:在一个交叉验证循环中自动找到最优的feature数量。
+</code></pre><h3 id="SelectFromModel-使用模型选取特征"><a href="#SelectFromModel-使用模型选取特征" class="headerlink" title="SelectFromModel:使用模型选取特征"></a>SelectFromModel:使用模型选取特征</h3><p>总的来说类似上面的递归式特征消除，不过在子集评价中不是去掉最不重要的特征，而是去掉所有<code>coef_</code>属性 或者<code>feature_importances_</code>属性低于阀值的特征。</p>
+<ul>
+<li><p>基于L1正则选取。</p>
+<p>  线性模型的L1正则会产生稀疏解，可以用此选取特征。可以用于此目的的稀疏评估器有用于回归的 <code>linear_model.Lasso</code> , 以及用于分类的 <code>linear_model.LogisticRegression</code> 和 <code>svm.LinearSVC</code></p>
+<p>  在 SVM 和逻辑回归中，参数 C 是用来控制稀疏性的：小的 C 会导致少的特征被选择。使用 Lasso，alpha 的值越大，越少的特征会被选择。</p>
+</li>
+<li><p>Tree-based feature selection（基于树的特征选取）</p>
+<p> 树可以产生每个feature的重要性，因此也可用于特征选取，与SelectFromModel结合使用。</p>
+</li>
+</ul>
+<p>## </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/2018-03-14-learn sklearn(三)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/14/2018-03-14-learn sklearn(三)/" itemprop="url">learn sklearn(三) SVM</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-14T00:00:00+08:00">
+                2018-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="SVM-支持向量机"><a href="#SVM-支持向量机" class="headerlink" title="SVM : 支持向量机"></a>SVM : 支持向量机</h2><p>sklearn 中支持向量机函数主要有两类函数：</p>
+<ul>
+<li>回归：<code>SVC</code>,<code>NuSVC</code>,<code>LinearSVC</code> </li>
+<li>分类：<code>SVR</code>,<code>NuSVR</code>,<code>LinearSVR</code></li>
+</ul>
+<p>以SVC原型说明:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class sklearn.svm.SVC(C=1.0, kernel=&apos;rbf&apos;, degree=3, gamma=&apos;auto&apos;, coef0=0.0, shrinking=True, probability=False, tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1, decision_function_shape=&apos;ovr&apos;, random_state=None)</span><br></pre></td></tr></table></figure></p>
+<p><code>C</code>：代表SVM中经验项的重要性，在正则项与经验项中权衡。C越大，越可能过拟合，C越小，越可能欠拟合。</p>
+<p><code>kernel</code>：代表使用的核函数。常用的有：<code>linear</code>,<code>rbf</code>(高斯核),<code>poly</code>,<code>sigmoid</code>,自定义函数。</p>
+<p><code>class_weight</code>：数组形式，将第i个class的类的<code>C</code>替换为<code>C * class_weight[i]</code>，提高某个类别的重要性。</p>
+<p><code>sample_weight</code>:类似<code>class_weight</code>,提升某个样本的重要性。<br><code>class_weight</code>与<code>sample_weight</code>用来解决不平衡问题。</p>
+<p><code>decision_function_shape</code>:<code>ovr</code>，<code>ovo</code>用来解决多分类问题。</p>
+<p><a href="http://sklearn.apachecn.org/cn/0.19.0/modules/svm.html#scores-probabilities" target="_blank" rel="noopener">参考</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/2018-03-13-java-JVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/13/2018-03-13-java-JVM/" itemprop="url">理解JVM</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T00:00:00+08:00">
+                2018-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Java虚拟机工作原理"><a href="#Java虚拟机工作原理" class="headerlink" title="Java虚拟机工作原理"></a>Java虚拟机工作原理</h2><pre><code>首先从总体上介绍一下JVM(Java虚拟机)。从一个Java源文件(.java)怎样一步步执行下去的。
+</code></pre><ul>
+<li>java源文件通过前段编译器(javac)编译成为.class的字节码文件。（编译）</li>
+<li>JRE通过类加载器将字节码文件加载到JVM的运行时数据区。（加载）</li>
+<li>执行引擎解释或者编译类文件，再由即使编译器将字节码转化为机器码，执行代码。</li>
+<li>通过GC(garbage collection)回收对象和卸载类</li>
+</ul>
+<p><img src="../img/18/JVM.jpg" alt="JVM结构"><br>    加载(Class Loader)部分内容可以在<a href="https://linshengli.github.io/2018/03/06/java-web/" target="_blank" rel="noopener">这里</a>找到。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/2018-03-08-ORM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/08/2018-03-08-ORM/" itemprop="url">理解ORM和数据库知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-08T00:00:00+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h3><p>ORM(Object/Relational Mapping):对象关系映射。</p>
+<ol>
+<li>是什么？<br>我们知道Java是面向对象的，而一部分有价值的业务数据（User，Order，Address等）会保存在数据库中，而数据库是不能保存类的，这对于面向对象的程序员简直不能忍。所以需要把数据从数据库中取出来之后还需要对数据进行组装。举一个简单的例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class User&#123;</span><br><span class="line">    private long ID；</span><br><span class="line">    private String name;</span><br><span class="line">    private String job;</span><br><span class="line">    private int age;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这个User的实例，在数据库中至少保存name，job，age，ID四个属性。用JDBC/ODBC取出来之后，必须进行组装成一个对象，需要程序员对SQL有一定的熟悉而且还麻烦。而ORM像是在java程序和底层数据库之间架了一层，程序员只需要告诉ORM框架它的对象在数据库中是怎样储存的就可以，余下的都交给ORM框架。获得数据库中储存的数据到转化为对象只需要一步：告诉ORM框架你需要的类是什么样的（比如说查找一个ID为1的对象），之后ORM框架自动生成SQL并查找到数据拼装之后返回。</p>
+<ol start="2">
+<li>ORM的优势</li>
+</ol>
+<ul>
+<li>提供面向对象的支持，把数据库领域的表，行，列映射到对象领域，因为开发者更加熟悉面向对象的原则。</li>
+<li>当业务逻辑中存在大量1:1,1:m,m:n的关联关系的时候，SQL的书写会变得更加复杂。</li>
+<li>让开发者专注在业务逻辑上，而不是SQL语言上。</li>
+<li>防止SQL注入（额外功能）</li>
+<li>可以更好的移植到其他数据库（不写SQL语句）</li>
+</ul>
+<ol start="3">
+<li>ORM的劣势</li>
+</ol>
+<ul>
+<li>速度更慢（加了一层）</li>
+<li>很多数据库原生底层的功能不能使用了（procedure等）</li>
+<li>O/R映射过程比较复杂（需要学习）</li>
+<li>查询语句（比较复杂的出现join aggressive等方法时）依旧比较复杂，SQL语句对开发者来说无法像裸SQL一样控制</li>
+</ul>
+<h3 id="hibernate-三种状态"><a href="#hibernate-三种状态" class="headerlink" title="hibernate 三种状态"></a>hibernate 三种状态</h3><ul>
+<li>只要与session关联的就是持久态。</li>
+<li>Session没关联，没有OID就是瞬时状态。</li>
+<li>Session没关联，有OID的就是游离状态。</li>
+<li>在调用save方法后，u此时已经是持久化对象了，记住一点：如果一个对象以及是持久化状态了，那么此时对该对象进行各种修改，或者调用多次update、save方法时，hibernate都不会发送sql语句，只有当事物提交的时候，此时hibernate才会拿当前这个对象与之前保存在session中的持久化对象进行比较，如果不相同就发送一条update的sql语句，否则就不会发送update语句</li>
+<li>当save一执行的时候，此时hibernate会根据id的生成策略往数据库中再插入一条数据，所以如果调用save方法，此时数据库会发送一条插入的语句。<br><a href="http://blog.csdn.net/qq_31426247/article/details/52869680" target="_blank" rel="noopener">参考</a><br><a href="https://www.cnblogs.com/greatfish/p/6034448.html" target="_blank" rel="noopener">参考1</a></li>
+</ul>
+<pre><code>[hibernate的N+1 TODO 问题]
+</code></pre><h3 id="数据库事务的ACID，乐观锁，悲观锁"><a href="#数据库事务的ACID，乐观锁，悲观锁" class="headerlink" title="数据库事务的ACID，乐观锁，悲观锁"></a>数据库事务的ACID，乐观锁，悲观锁</h3><h4 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h4><ul>
+<li><p>原子性（Atomicity）</p>
+<p>  原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚。</p>
+</li>
+<li><p>一致性（Consistency）</p>
+<p>  一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须处于一致性状态。</p>
+<p>  拿转账来说，假设用户A和用户B两者的钱加起来一共是5000，那么不管A和B之间如何转账，转几次账，事务结束后两个用户的钱相加起来应该还得是5000，这就是事务的一致性。</p>
+<p>  一致性是语义上的，而不是语法上的。</p>
+</li>
+<li><p>隔离性（Isolation）</p>
+<p>  隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。</p>
+<p>  即要达到这么一种效果：对于任意两个并发的事务T1和T2，在事务T1看来，T2要么在T1开始之前就已经结束，要么在T1结束之后才开始，这样每个事务都感觉不到有其他事务在并发地执行。</p>
+</li>
+<li><p>持久性（Durability）</p>
+<p>  持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</p>
+<p>  例如我们在使用JDBC操作数据库时，在提交事务方法后，提示用户事务操作完成，当我们程序执行完成直到看到提示后，就可以认定事务以及正确提交，即使这时候数据库出现了问题，也必须要将我们的事务完全执行完成，否则就会造成我们看到提示事务处理完毕，但是数据库因为故障而没有执行事务的重大错误。</p>
+</li>
+</ul>
+<h4 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h4><p>先介绍一下三个概念（事务的隔离级别就是针对这三个概念而设置的）</p>
+<ul>
+<li>脏读<br>  脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据。</li>
+<li><p>不可重复读<br>  不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。</p>
+<p>  例如事务T1在读取某一数据，而事务T2立马修改了这个数据并且提交事务给数据库，事务T1再次读取该数据就得到了不同的结果，发送了不可重复读。</p>
+<p>  不可重复读和脏读的区别是，脏读是某一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据。</p>
+</li>
+<li>幻读<br>  如事务T1对一个表中所有的行的某个数据项做了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。而操作事务T1的用户如果再查看刚刚修改的数据，会发现还有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。<br>  幻读和不可重复读都是读取了另一条已经提交的事务（这点就脏读不同），所不同的是不可重复读查询的都是同一个数据项，而幻读针对的是一批数据整体（比如数据的个数）。</li>
+</ul>
+<p>事务隔离的四个级别：</p>
+<ul>
+<li>Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。</li>
+<li>Repeatable read (可重复读)：可避免脏读、不可重复读的发生。</li>
+<li>Read committed (读已提交)：可避免脏读的发生。</li>
+<li>Read uncommitted (读未提交)：最低级别，任何情况都无法保证。</li>
+</ul>
+<p><a href="https://www.cnblogs.com/fjdingsd/p/5273008.html" target="_blank" rel="noopener">事务隔离</a></p>
+<p>锁和事务隔离的关系：<br><a href="https://www.zhihu.com/question/23242151" target="_blank" rel="noopener">人类的好朋友的回答</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/2018-03-06-spring-data-mongodb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/2018-03-06-spring-data-mongodb/" itemprop="url">spring-data-mongodb</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T00:00:00+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="spring-data-mongodb"><a href="#spring-data-mongodb" class="headerlink" title="spring-data-mongodb"></a>spring-data-mongodb</h2><h3 id="1-mapping-定义Document"><a href="#1-mapping-定义Document" class="headerlink" title="1. mapping(定义Document)"></a>1. mapping(定义Document)</h3><p>所有的映射均由<code>org.springframework.data.mongodb.core.convert.MappingMongoConverter</code>类实现。<br>几点基准：</p>
+<ul>
+<li>每个类均映射为一个mongodb中的Collection，Collection的名称使用驼峰式命名。</li>
+<li>除@DbRef指定的属性之外，所有的属性均保存在该类中，包括嵌入在该类里的类。</li>
+</ul>
+<h4 id="1-1-id字段的映射"><a href="#1-1-id字段的映射" class="headerlink" title="1.1 _id字段的映射"></a>1.1 _id字段的映射</h4><p>@Id,@Field,id（属性名为id）均可用来指定_id。<br>|Field definition|Resulting Id-Fieldname in MongoDB|<br>|:—:|:—:|<br>|String id|_id|<br>|@Field String id|_id|<br>|@Field(“x”) String id|x|<br>|@Id String x|_id|<br>|@Field(“x”) @Id String x|_id|<br>|||<br><a href="https://docs.spring.io/spring-data/mongodb/docs/2.0.5.RELEASE/reference/html/#mapping.conventions.id-field" target="_blank" rel="noopener">TODO 如果id不能转化为一个ObjectId怎么办？</a></p>
+<h4 id="1-2-映射的type对应"><a href="#1-2-映射的type对应" class="headerlink" title="1.2 映射的type对应"></a>1.2 映射的type对应</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Type conversion</th>
+<th style="text-align:center">Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">String</td>
+<td style="text-align:center">native</td>
+<td style="text-align:center">{“firstname” : “Dave”}</td>
+</tr>
+</tbody>
+</table>
+<p>double, Double, float, Float|native|{“weight” : 42.5}|<br>int, Integer, short, Short|native 32-bit integer|{“height” : 42}<br>long, Long|native 64-bit integer|{“height” : 42}|<br>Date, Timestamp|native|{“date” : ISODate(“2019-11-12T23:00:00.809Z”)}|<br>Array, List, BasicDBList|native|{“cookies” : [ … ]}<br><a href="https://docs.spring.io/spring-data/mongodb/docs/2.0.5.RELEASE/reference/html/#mapping-conversion" target="_blank" rel="noopener">TODO test array?</a></p>
+<h4 id="1-3-注解-Mapping-annotation-overview"><a href="#1-3-注解-Mapping-annotation-overview" class="headerlink" title="1.3 注解(Mapping annotation overview)"></a>1.3 注解(Mapping annotation overview)</h4><ul>
+<li><p><code>@Id</code> - applied at the field level to mark the field used for identity purpose.</p>
+</li>
+<li><p><code>@Document</code> - applied at the class level to indicate this class is a candidate for mapping to the database. You can specify the name of the collection where the database will be stored.</p>
+</li>
+<li><p><code>@DBRef</code> - applied at the field to indicate it is to be stored using a com.mongodb.DBRef.</p>
+</li>
+<li><p><code>@Indexed</code> - applied at the field level to describe how to index the field.</p>
+</li>
+<li><p><code>@CompoundIndex</code> - applied at the type level to declare Compound Indexes</p>
+</li>
+<li><p><code>@GeoSpatialIndexed</code> - applied at the field level to describe how to geoindex the field.</p>
+</li>
+<li><p><code>@TextIndexed</code> - applied at the field level to mark the field to be included in the text index.</p>
+</li>
+<li><p><code>@Language</code> - applied at the field level to set the language override property for text index.</p>
+</li>
+<li><p><code>@Transient</code> - by default all private fields are mapped to the document, this annotation excludes the field where it is applied from being stored in the database</p>
+</li>
+<li><p><code>@PersistenceConstructor</code> - marks a given constructor - even a package protected one - to use when instantiating the object from the database. Constructor arguments are mapped by name to the key values in the retrieved Document.</p>
+</li>
+<li><p><code>@Value</code> - this annotation is part of the Spring Framework . Within the mapping framework it can be applied to constructor arguments. This lets you use a Spring Expression Language statement to transform a key’s value retrieved in the database before it is used to construct a domain object. In order to reference a property of a given document one has to use expressions like: <code>@Value(&quot;#root.myProperty&quot;)</code> where root refers to the root of the given document.</p>
+</li>
+<li><p><code>@Field</code> - applied at the field level and described the name of the field as it will be represented in the MongoDB BSON document thus allowing the name to be different than the fieldname of the class.</p>
+</li>
+<li><p><code>@Version</code> - applied at field level is used for optimistic locking and checked for modification on save operations. The initial value is zero which is bumped automatically on every update.<br><a href="https://docs.spring.io/spring-data/mongodb/docs/2.0.5.RELEASE/reference/html/#mongo-template.optimistic-locking" target="_blank" rel="noopener">记录的版本，示例</a></p>
+</li>
+</ul>
+<p><code>@TypeAlias(&quot;pers&quot;)</code>在mongodb中该类的_class为pers。<br><code>@PersistenceConstructor</code>标记一个构造器，指定用来构造类的实例，并可以结合<code>@Value</code>使用，可以达到修改构造器用处。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Document</span><br><span class="line">	static class ObjectContainer &#123;</span><br><span class="line"></span><br><span class="line">		@Field(&quot;property&quot;) private final PrimitiveContainer m_property;</span><br><span class="line"></span><br><span class="line">		@PersistenceConstructor</span><br><span class="line">		public ObjectContainer(@Value(&quot;#root.property&quot;) PrimitiveContainer a_property) &#123;</span><br><span class="line">			m_property = a_property;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public PrimitiveContainer property() &#123;</span><br><span class="line">			return m_property;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-操作Mongodb"><a href="#2-操作Mongodb" class="headerlink" title="2. 操作Mongodb"></a>2. 操作Mongodb</h3><p>最常用的两个操作Mongodb的类是MongoTemple，Repository类。</p>
+<h4 id="2-1-连接Mongodb"><a href="#2-1-连接Mongodb" class="headerlink" title="2.1 连接Mongodb"></a>2.1 连接Mongodb</h4><p>使用MongoClient<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public MongoClient mongoClient() &#123;</span><br><span class="line">    return new MongoClient();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>常用的MongoClient类构造方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public MongoClient(String host) &#123;</span><br><span class="line">    this(new ServerAddress(host));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public MongoClient(String host, int port) &#123;</span><br><span class="line">    this(new ServerAddress(host, port));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public MongoClient(ServerAddress addr) &#123;</span><br><span class="line">    this(addr, (new Builder()).build());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public MongoClient(MongoClientURI uri) &#123;</span><br><span class="line">    super(uri);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>MongoClientFactoryBean</code>对应MongoClient的工厂模式，可以用来构建MongoClient（<code>createInstance方法</code>）。</p>
+</blockquote>
+<h4 id="2-2-使用MongoTemple"><a href="#2-2-使用MongoTemple" class="headerlink" title="2.2 使用MongoTemple"></a>2.2 使用MongoTemple</h4><p>MongoTemple的三种构造方法</p>
+<ol>
+<li><p><code>MongoTemplate(MongoClient mongo, String databaseName)</code> - takes the com.mongodb.MongoClient object and the default database name to operate against.</p>
+</li>
+<li><p><code>MongoTemplate(MongoDbFactory mongoDbFactory)</code> - takes a MongoDbFactory object that encapsulated the com.mongodb.MongoClient object, database name, and username and password.</p>
+</li>
+<li><p><code>MongoTemplate(MongoDbFactory mongoDbFactory, MongoConverter mongoConverter)</code> - adds a MongoConverter to use for mapping.</p>
+</li>
+</ol>
+<p>MongoTemple的CRUD：</p>
+<p>插入数据:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void save (Object objectToSave) Save the object to the default collection.</span><br><span class="line"></span><br><span class="line">void save (Object objectToSave, String collectionName) Save the object to the specified collection.</span><br><span class="line"></span><br><span class="line">A similar set of insert operations is listed below</span><br><span class="line"></span><br><span class="line">void insert (Object objectToSave) Insert the object to the default collection.</span><br><span class="line"></span><br><span class="line">void insert (Object objectToSave, String collectionName) Insert the object to the specified collection.</span><br></pre></td></tr></table></figure></p>
+<p>区别:<br>insert在出现相同的id的时候，会出现错误，而save会覆盖原值。(只限于id)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insertAll(Collection objectionsToSave)</span><br><span class="line">insert methods that take a Collection as the first argument. This inserts a list of objects in a single batch write to the database.</span><br></pre></td></tr></table></figure>
+<p>Update:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">updateFirst Updates the first document that matches the query document criteria with the provided updated document.</span><br><span class="line"></span><br><span class="line">updateMulti Updates all objects that match the query document criteria with the provided updated document.</span><br></pre></td></tr></table></figure></p>
+<p>常见的update方法的示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WriteResult wr = mongoTemplate.updateMulti(new Query(where(&quot;accounts.accountType&quot;).is(Account.Type.SAVINGS)),</span><br><span class="line">  new Update().inc(&quot;accounts.$.balance&quot;, 50.00), Account.class);</span><br></pre></td></tr></table></figure></p>
+<p>Update的方法(和mongodb中的原生update方法类似)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[TODO to review]</span><br><span class="line"></span><br><span class="line">Update addToSet (String key, Object value) Update using the $addToSet update modifier</span><br><span class="line">Update currentDate (String key) Update using the $currentDate update modifier</span><br><span class="line">Update currentTimestamp (String key) Update using the $currentDate update modifier with $type timestamp</span><br><span class="line">Update inc (String key, Number inc) Update using the $inc update modifier</span><br><span class="line">Update max (String key, Object max) Update using the $max update modifier</span><br><span class="line">Update min (String key, Object min) Update using the $min update modifier</span><br><span class="line">Update multiply (String key, Number multiplier) Update using the $mul update modifier</span><br><span class="line">Update pop (String key, Update.Position pos) Update using the $pop update modifier</span><br><span class="line">Update pull (String key, Object value) Update using the $pull update modifier</span><br><span class="line">Update pullAll (String key, Object[] values) Update using the $pullAll update modifier</span><br><span class="line">Update push (String key, Object value) Update using the $push update modifier</span><br><span class="line">Update pushAll (String key, Object[] values) Update using the $pushAll update modifier</span><br><span class="line">Update rename (String oldName, String newName) Update using the $rename update modifier</span><br><span class="line">Update set (String key, Object value) Update using the $set update modifier</span><br><span class="line">Update setOnInsert (String key, Object value) Update using the $setOnInsert update modifier</span><br><span class="line">Update unset (String key) Update using the $unset update modifier</span><br></pre></td></tr></table></figure></p>
+<p>删除数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template.remove(tywin, &quot;GOT&quot;);                                          &lt;1&gt;    </span><br><span class="line">template.remove(query(where(&quot;lastname&quot;).is(&quot;lannister&quot;)), &quot;GOT&quot;);       &lt;2&gt;  </span><br><span class="line">template.remove(new Query().limit(3), &quot;GOT&quot;);                           &lt;3&gt;    </span><br><span class="line">template.findAllAndRemove(query(where(&quot;lastname&quot;).is(&quot;lannister&quot;), &quot;GOT&quot;);&lt;4&gt;  </span><br><span class="line">template.findAllAndRemove(new Query().limit(3), &quot;GOT&quot;);                  &lt;5&gt;</span><br><span class="line"></span><br><span class="line">Remove a single entity via its _id from the associated collection.</span><br><span class="line">Remove all documents matching the criteria of the query from the GOT collection.</span><br><span class="line">Remove the first 3 documents in the GOT collection. Unlike &lt;2&gt;, the documents to remove are identified via their _id executing the given query applying sort, limit and skip options first and then remove all at once in a separate step.</span><br><span class="line">Remove all documents matching the criteria of the query from the GOT collection. Unlike &lt;3&gt;, documents do not get deleted in a batch but one by one.</span><br><span class="line">Remove the first 3 documents in the GOT collection. Unlike &lt;3&gt;, documents do not get deleted in a batch but one by one.</span><br></pre></td></tr></table></figure></p>
+<p>区别:<br>remove当有多个需要删除的记录时，一次删除；而findAllAndRemove则是一跳一条记录删除。</p>
+<p>Upsert数据<br>如果数据库中没有该记录则插入数据库中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">template.upsert(query(where(&quot;ssn&quot;).is(1111).and(&quot;firstName&quot;).is(&quot;Joe&quot;).and(&quot;Fraizer&quot;).is(&quot;Update&quot;)), update(&quot;address&quot;, addr), Person.class);</span><br></pre></td></tr></table></figure></p>
+<p>查找并修改数据：返回原值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;T&gt; T findAndModify(Query query, Update update, Class&lt;T&gt; entityClass);</span><br><span class="line"></span><br><span class="line">&lt;T&gt; T findAndModify(Query query, Update update, Class&lt;T&gt; entityClass, String collectionName);</span><br><span class="line"></span><br><span class="line">&lt;T&gt; T findAndModify(Query query, Update update, FindAndModifyOptions options, Class&lt;T&gt; entityClass);</span><br><span class="line"></span><br><span class="line">&lt;T&gt; T findAndModify(Query query, Update update, FindAndModifyOptions options, Class&lt;T&gt; entityClass, String collectionName);</span><br></pre></td></tr></table></figure>
+<p>如果想返回新值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = template.findAndModify(query, update, new FindAndModifyOptions().returnNew(true), Person.class);</span><br></pre></td></tr></table></figure></p>
+<p>The FindAndModifyOptions lets you set the options of returnNew, upsert, and remove.</p>
+<p>查找数据：[TODO review]</p>
+<ol>
+<li><p>BasicQuery用于直接处理mongo的查找语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BasicQuery query = new BasicQuery(&quot;&#123; age : &#123; $lt : 50 &#125;, accounts.balance : &#123; $gt : 1000.00 &#125;&#125;&quot;);</span><br><span class="line">List&lt;Person&gt; result = mongoTemplate.find(query, Person.class);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>标准面向对象的Query方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Criteria all (Object o) Creates a criterion using the $all operator</span><br><span class="line">Criteria and (String key) Adds a chained Criteria with the specified key to the current Criteria and returns the newly created one</span><br><span class="line">Criteria andOperator (Criteria…​ criteria) Creates an and query using the $and operator for all of the provided criteria (requires MongoDB 2.0 or later)</span><br><span class="line">Criteria elemMatch (Criteria c) Creates a criterion using the $elemMatch operator</span><br><span class="line">Criteria exists (boolean b) Creates a criterion using the $exists operator</span><br><span class="line">Criteria gt (Object o) Creates a criterion using the $gt operator</span><br><span class="line">Criteria gte (Object o) Creates a criterion using the $gte operator</span><br><span class="line">Criteria in (Object…​ o) Creates a criterion using the $in operator for a varargs argument.</span><br><span class="line">Criteria in (Collection&lt;?&gt; collection) Creates a criterion using the $in operator using a collection</span><br><span class="line">Criteria is (Object o) Creates a criterion using field matching (&#123; key:value &#125;). If the specified value is a document, the order of the fields and exact equality in the document matters.</span><br><span class="line">Criteria lt (Object o) Creates a criterion using the $lt operator</span><br><span class="line">Criteria lte (Object o) Creates a criterion using the $lte operator</span><br><span class="line">Criteria mod (Number value, Number remainder) Creates a criterion using the $mod operator</span><br><span class="line">Criteria ne (Object o) Creates a criterion using the $ne operator</span><br><span class="line">Criteria nin (Object…​ o) Creates a criterion using the $nin operator</span><br><span class="line">Criteria norOperator (Criteria…​ criteria) Creates an nor query using the $nor operator for all of the provided criteria</span><br><span class="line">Criteria not () Creates a criterion using the $not meta operator which affects the clause directly following</span><br><span class="line">Criteria orOperator (Criteria…​ criteria) Creates an or query using the $or operator for all of the provided criteria</span><br><span class="line">Criteria regex (String re) Creates a criterion using a $regex</span><br><span class="line">Criteria size (int s) Creates a criterion using the $size operator</span><br><span class="line">Criteria type (int t) Creates a criterion using the $type operator</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; result = mongoTemplate.find(query(where(&quot;age&quot;).lt(50)</span><br><span class="line">  .and(&quot;accounts.balance&quot;).gt(1000.00d)), Person.class);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>其他find的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">`findAll` Query for a list of objects of type T from the collection.</span><br><span class="line">`findOne` Map the results of an ad-hoc query on the collection to a single instance of an object of the specified type.</span><br><span class="line">`findById` Return an object of the given id and target class.</span><br><span class="line">`find` Map the results of an ad-hoc query on the collection to a List of the specified type.</span><br><span class="line">`findAndRemove` Map the results of an ad-hoc query on the collection to a single instance of an object of the specified type. The first document that matches the query is returned and also removed from the collection in the database.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TextQuery</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TextQuery.searching(new TextCriteria().matching(&quot;coffee&quot;).matching(&quot;-cake&quot;));</span><br><span class="line">TextQuery.searching(new TextCriteria().matching(&quot;coffee&quot;).notMatching(&quot;cake&quot;));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Query by Example（QBE）<br><a href="https://docs.spring.io/spring-data/mongodb/docs/2.0.5.RELEASE/reference/html/#query-by-example" target="_blank" rel="noopener">TODO</a></p>
+</li>
+</ol>
+<h4 id="2-3-使用Spring-Data-Repositories"><a href="#2-3-使用Spring-Data-Repositories" class="headerlink" title="2.3 使用Spring Data Repositories"></a>2.3 使用Spring Data Repositories</h4><p>Repositories只是作为一个Spring-data的一个标示，同时也是其的一个核心借口，内部不存在方法，所有的方法都是通过Spring的内部注入机制注入。<br>在Repositories上层是CrudRepository。CrudRepository借口定义了几个基本的方法。spring-data同时提供JpaRepository,MongoRepository接口，屏蔽了底层实现逻辑。<br>在CrudRepository上层是PagingAndSortingRepository，该接口定义了分页查询等接口。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/2018-03-06-java-web/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/2018-03-06-java-web/" itemprop="url">企业级引用系统开发技术(1)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T00:00:00+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="stateful和stateless的讨论"><a href="#stateful和stateless的讨论" class="headerlink" title="stateful和stateless的讨论"></a>stateful和stateless的讨论</h3><p>想要区分什么是有状态和无状态，首先要明白什么是状态。</p>
+<ol>
+<li>状态是什么？比如说一个人35岁，那么这个35岁就可以视为这个”人”的状态。在对象中像这类的“状态”就是用属性保存。比如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Person&#123;</span><br><span class="line">    private int age;</span><br><span class="line"> </span><br><span class="line">    public Person()&#123;&#125;</span><br><span class="line"></span><br><span class="line">    public int getAge()&#123;</span><br><span class="line">        return this.age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int newAge)&#123;</span><br><span class="line">        this.age = newAge;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这就是一个有状态的类。</p>
+<ol start="2">
+<li><p>在java web中，singlton和prototype的使用</p>
+<ul>
+<li>singlton（单例）默认是在全局中只有一个实例，所有调用都使用的是这一个实例。</li>
+<li><p>prototype（原型）每次创建都会重新创建一个实例，将construct的过程走一遍。</p>
+<p>优缺点：<br>由于singlton只有一个实例，而现实情况中经常会有多线程访问的情况，如果singlton是一个有状态的实例，那么就有可能出现竞争的情况，对资源进行竞争。<br>prototype每次都会创建，我们知道每一次创建都需要消耗时间和资源，当有很多人访问的时候，代价又难以接受。<br>所以对于web中应用，如果是没有状态的类，可以实现为单例，对于有状态的类，实现为原型。</p>
+</li>
+</ul>
+</li>
+<li><p>更多的讨论</p>
+<p> 在MVC架构中，struts由于与前段端交流，常会涉及到有状态的类，因此其为原型模式；而在spring中，默认为singlton（单例）模式。<br> 在MVC的Controller，Service，Dao层中，我们应该尽可能实现为无状态的类，只包含方法。</p>
+<p> servlet为无状态的类，session为有状态的类。</p>
+<p> <a href="https://www.cnblogs.com/zengzhf/p/7878357.html" target="_blank" rel="noopener">更多的讨论</a></p>
+</li>
+</ol>
+<h3 id="RMI-远程方法调用"><a href="#RMI-远程方法调用" class="headerlink" title="RMI(远程方法调用)"></a>RMI(远程方法调用)</h3><p>从三个方面理解RMI。</p>
+<ol>
+<li>目的<br> 远程方法调用，就是为了让在某个java虚拟机上的对象像调用本地对象一样调用另一个java 虚拟机中的对象上的方法。是牵涉到多个JVM的过程。</li>
+<li>RMI的过程<br><img src="/img/18/rmi.png" alt="rmi"></li>
+</ol>
+<ul>
+<li>为了在两个JVM中都通，有了RMI，使用Java远程消息交换协议JRMP（Java Remote Messaging Protocol）进行通信；</li>
+<li>为了屏蔽掉通信的具体实现，在客户端有stub，服务端有skeleton，两端通过这两个代理进行远端方法调用。（相当于加了一层）</li>
+<li><p>到目前为止，client端并不知道server端有那些可以调用的方法。通过设置一个中间rmiregister，server将提供的方法注册到该rmiregister中，client端可以到rmiregister中查找需要的远端调用。</p>
+<p>  远端调用实现的过程：</p>
+<ol>
+<li>rmiregister运行</li>
+<li>server在rmiregister注册所提供的调用（将stub上传到rmiregister）</li>
+<li>client在rmiregister查找所需要的远端调用，并将其stub下载至本地<em>至此，client端有stub，server端有skeleton，两端可以直接通信</em></li>
+<li>client远端调用</li>
+<li>client的stub发出远端调用请求</li>
+<li>server端的skeleton接收到stub发过来的远端调用，解析并调用远端调用的实现</li>
+<li>第6步的返回值被skeleton发送值stub</li>
+<li>stub解析第6步的结果并返回给client。</li>
+</ol>
+</li>
+</ul>
+<ol start="3">
+<li><p>代码实现<br>在java1.8中，已经不需要使用rmic（rmi compile）手动编译stub和skeleton了所以过程会简单些。代码步骤(假设远端调用返回的对象是Warehouse)：</p>
+<ol>
+<li>定义Warehouse接口,并且继承自Remote</li>
+<li>在服务器端定义WarehouseImpl,继承自UnicastRemoteObject</li>
+<li>编写client和server端的代码</li>
+<li>运行rmiregister</li>
+<li>运行server端代码</li>
+<li><p>运行client端代码</p>
+<p>最后client端代码：Warehouse.class,client.class<br>服务器端代码:Warehouse.class WarehouseImpl.class,server.class</p>
+<p><em>注意：设置CLASSPATH，添加client和server的路径到CLASSPATH，否则java找不到其对应的class文件</em><br><em>使用jndi，配置jndi.properties</em></p>
+<p>代码示例:    </p>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">//Warehouse 两端都有</span><br><span class="line">public interface Warehouse extends Remote</span><br><span class="line">&#123;  </span><br><span class="line">   double getPrice(String description) throws RemoteException;</span><br><span class="line">&#125;</span><br><span class="line">//client</span><br><span class="line">public class WarehouseClient</span><br><span class="line">&#123;</span><br><span class="line">   public static void main(String[] args) throws NamingException, RemoteException</span><br><span class="line">   &#123;</span><br><span class="line">//      System.setProperty(&quot;java.security.policy&quot;, &quot;client.policy&quot;);</span><br><span class="line">//      System.setSecurityManager(new SecurityManager());</span><br><span class="line">      Context namingContext = new InitialContext();</span><br><span class="line">      </span><br><span class="line">      System.out.print(&quot;RMI registry bindings: &quot;);</span><br><span class="line">      NamingEnumeration&lt;NameClassPair&gt; e = namingContext.list(&quot;rmi://localhost/&quot;);</span><br><span class="line">      while (e.hasMore())</span><br><span class="line">         System.out.println(e.next().getName());</span><br><span class="line">      </span><br><span class="line">      String url = &quot;rmi://localhost:1099/central_warehouse&quot;;      </span><br><span class="line">      Warehouse centralWarehouse = (Warehouse) namingContext.lookup(url);</span><br><span class="line">      </span><br><span class="line">      Scanner in = new Scanner(System.in);</span><br><span class="line">      System.out.print(&quot;Enter keywords: &quot;);</span><br><span class="line">      String name = in.nextLine().split(&quot;\\s+&quot;)[0];</span><br><span class="line">      Double price = centralWarehouse.getPrice(name);</span><br><span class="line">      </span><br><span class="line">      System.out.println(&quot;Price&quot; + &quot;: &quot; + price);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">//WarehouseImpl</span><br><span class="line">public class WarehouseImpl extends UnicastRemoteObject implements Warehouse</span><br><span class="line">&#123;</span><br><span class="line">   private Map&lt;String, Double&gt; products;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">    * Constructs a warehouse implementation.</span><br><span class="line">    */</span><br><span class="line">   public WarehouseImpl() throws RemoteException</span><br><span class="line">   &#123;</span><br><span class="line">      products = new HashMap&lt;&gt;();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public void add(String keyword, Double product)</span><br><span class="line">   &#123;</span><br><span class="line">      products.put(keyword, product);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   public double getPrice(String description) throws RemoteException</span><br><span class="line">   &#123;</span><br><span class="line">      return products.get(description);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">//server</span><br><span class="line">public class WarehouseServer</span><br><span class="line">&#123;</span><br><span class="line">   public static void main(String[] args) throws RemoteException, NamingException</span><br><span class="line">   &#123;</span><br><span class="line">//      System.setProperty(&quot;java.security.policy&quot;, &quot;server.policy&quot;);</span><br><span class="line">//      System.setSecurityManager(new SecurityManager());</span><br><span class="line">      </span><br><span class="line">      System.out.println(&quot;Constructing server implementation...&quot;);</span><br><span class="line">      WarehouseImpl centralWarehouse = new WarehouseImpl();</span><br><span class="line">      centralWarehouse.add(&quot;java&quot;,new Double(23.5));</span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">      System.out.println(&quot;Binding server implementation to registry...&quot;);</span><br><span class="line">      Context namingContext = new InitialContext();</span><br><span class="line">      namingContext.bind(&quot;rmi:central_warehouse&quot;, centralWarehouse);</span><br><span class="line">      System.out.println(&quot;Waiting for invocations from clients...&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//jndi.properties</span><br><span class="line"></span><br><span class="line">java.naming.factory.initial=com.sun.jndi.rmi.registry.RegistryContextFactory</span><br><span class="line">java.naming.provider.url=rmi://localhost:1099</span><br></pre></td></tr></table></figure>
+<p>[TODO activation pdf2]</p>
+<ol start="4">
+<li>rmi和spring结合</li>
+</ol>
+<ol start="5">
+<li>Java程序执行过程<br>宏观上来看Java程序运行的过程。</li>
+</ol>
+<ul>
+<li>编写好的.java程序被编译成为.class文件(可以加密在编译好字后尽心加密 ，然后用自定义的类加载器解密)</li>
+<li>启动Java虚拟机，类加载器加载需要的类到内存中(可以包括解密过程)</li>
+<li><p>执行引擎执行该类</p>
+<p>  如下图：<br><img src="/img/18/classloader.png" alt="Class Loader"></p>
+</li>
+</ul>
+<ol start="6">
+<li>加载过程<br>Java程序启动过程中，会按照顺序有以下几个类加载器：<br><img src="/img/18/classloader1.png" alt="class Loader1"></li>
+</ol>
+<ul>
+<li>启动类加载器（BootstrapClassLoader）：使用C语言编写(如果用java编写，而这个加载器也需要使用类加载器加载，形成一个环，无法加载)，主要加载jre/lib下的文件，比如rt.jar等，该类无法被开发者使用。</li>
+<li>扩展类加载器（Extension ClassLoader）：该类加载器负责加载JDK安装目录下的\jre\lib\ext的类，开发者也可以直接使用扩展类加载器。</li>
+<li>应用程序类加载器（AppClassLoader）：负责加载用户类路径（Classpath）所指定的类，开发者可以直接使用该类加载器，如果应用程序中没有定义过自己的类加载器，该类加载器为默认的类加载器。</li>
+<li>用户自定义类加载器（User ClassLoader）：JVM自带的类加载器是从本地文件系统加载标准的java class文件，而自定义的类加载器可以做到在执行非置信代码之前，自动验证数字签名，动态地创建符合用户特定需要的定制化构建类，从特定的场所（数据库、网络中）取得java class，用户使用的plugin classloader严格来说也是属于user<br>classloader。</li>
+</ul>
+<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>每个类加载器加载类的时候，首先调用它的父加载器，如果他的父加载器不能加载，再轮到它加载。<br>好处:首先从java的内库中加载相应的类，在加载器之间形成一种加载的优先级顺序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">protected synchronized Class&lt;?&gt; loadClass(String name, boolean resolve) throws ClassNotFoundException&#123;</span><br><span class="line">    //check the class has been loaded or not</span><br><span class="line">    Class c = findLoadedClass(name);</span><br><span class="line">    if(c == null) &#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            if(parent != null) &#123;//调用父加载器，递归上去，第一个使用的加载器就是启动类加载器</span><br><span class="line">                c = parent.loadClass(name, false);</span><br><span class="line">            &#125; else&#123;</span><br><span class="line">                c = findBootstrapClassOrNull(name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch(ClassNotFoundException e) &#123;</span><br><span class="line">            //if throws the exception , the father can not complete the load</span><br><span class="line">        &#125;</span><br><span class="line">        if(c == null) &#123;</span><br><span class="line">            c = findClass(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(resolve) &#123;</span><br><span class="line">        resolveClass(c);</span><br><span class="line">    &#125;</span><br><span class="line">    return c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="../img/18/classParent.jpg" alt="双亲委派模型"></p>
+<p>如何使用自定义的类加载器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">//Book类定义</span><br><span class="line">public class Book</span><br><span class="line">&#123;</span><br><span class="line">   public String isbn;</span><br><span class="line"></span><br><span class="line">   public Book(String isbn)</span><br><span class="line">   &#123;</span><br><span class="line">      this.isbn = isbn;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public Book() &#123;</span><br><span class="line">      this.isbn = &quot;123456789&quot;;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public String getIsbn()</span><br><span class="line">   &#123;</span><br><span class="line">      return isbn;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public void setIsbn(String isbn)&#123;</span><br><span class="line">      this.isbn = isbn;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//User ClassLoader </span><br><span class="line">import java.io.*;</span><br><span class="line">public class myClassLoader extends ClassLoader &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException &#123;</span><br><span class="line">        byte[] bytes = this.loadByteClass(name);</span><br><span class="line">        return this.defineClass(name, bytes, 0, bytes.length);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private byte[] loadByteClass(String name)&#123;</span><br><span class="line">        InputStream is = null;</span><br><span class="line">        byte[] data = null;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        try &#123;</span><br><span class="line">            is = new FileInputStream(new File(&quot;/home/tbxsx/文档/大三下/企业级应用系统开发技术/serverComponent1/WarehouseClient/src/&quot; +name+&quot;.class&quot; ));</span><br><span class="line">            int c = 0;</span><br><span class="line">            while(-1 != (c = is.read()))&#123;</span><br><span class="line">                baos.write(c);</span><br><span class="line">            &#125;</span><br><span class="line">            data = baos.toByteArray();</span><br><span class="line"></span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if(is != null)</span><br><span class="line">                    is.close();</span><br><span class="line">                if(baos != null)</span><br><span class="line">                    baos.close();</span><br><span class="line">            &#125; catch (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//main test</span><br><span class="line"></span><br><span class="line">import java.lang.reflect.Field;</span><br><span class="line">import java.lang.reflect.InvocationTargetException;</span><br><span class="line">import java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException &#123;</span><br><span class="line">        myClassLoader mc = new myClassLoader();</span><br><span class="line">        Class&lt;?&gt; c = mc.loadClass(&quot;Book&quot;);</span><br><span class="line">        Method[] ms = c.getMethods();</span><br><span class="line">        Book b = (Book) c.newInstance();</span><br><span class="line">        for(Method m:ms)&#123;</span><br><span class="line">            System.out.println(m.getName());</span><br><span class="line">        &#125;</span><br><span class="line">        Field[] fs = c.getFields();</span><br><span class="line">        for(Field f:fs)&#123;</span><br><span class="line">            System.out.println(f.getName());</span><br><span class="line">        &#125;</span><br><span class="line">        Method m = c.getMethod(&quot;getIsbn&quot;);</span><br><span class="line">        Method m1 = c.getMethod(&quot;setIsbn&quot;,String.class);</span><br><span class="line"></span><br><span class="line">        System.out.println(m.getName());</span><br><span class="line">        System.out.println(m1.getName());</span><br><span class="line">        System.out.println(&quot;m1&quot;);</span><br><span class="line"></span><br><span class="line">        System.out.println(m.invoke(b));</span><br><span class="line">        m1.invoke(b,&quot;hhh&quot;);</span><br><span class="line">        System.out.println(m.invoke(b));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//输出</span><br><span class="line"></span><br><span class="line">getIsbn</span><br><span class="line">setIsbn</span><br><span class="line">wait</span><br><span class="line">wait</span><br><span class="line">wait</span><br><span class="line">equals</span><br><span class="line">toString</span><br><span class="line">hashCode</span><br><span class="line">getClass</span><br><span class="line">notify</span><br><span class="line">notifyAll</span><br><span class="line">isbn</span><br><span class="line">getIsbn</span><br><span class="line">setIsbn</span><br><span class="line">m1</span><br><span class="line">123456789</span><br><span class="line">hhh</span><br></pre></td></tr></table></figure>
+<p><em>注意:定义ClassLoader从根本上来说就是重载findClass函数，找到需要load的类的二进制文件，在loader中处理（解密验证等等处理）之后，通过defineClass函数之后返回</em></p>
+<p><em>invoke函数（反射）</em><br>获得反射Class类的三种反射机制：<br><code>Person person = new Person();</code></p>
+<ul>
+<li>1、通过Object类的getClass()方法：（需要先实例化一个对象）<br>  <code>Class clazz1 = person.getClass();</code></li>
+<li>2、通过对象实例方法获取对象：（需要先实例化一个对象）<br>  <code>Class clazz2 = person.class;</code></li>
+<li>3、类的全路径：（不许呀实例对象）通过类的加载器实现<br>  <code>Class clazz3 = Class.forName(&quot;com.cn.Person&quot;);</code><br><a href="https://www.cnblogs.com/whvit/p/5861357.html" target="_blank" rel="noopener">invoke 参考</a><br>运行时数据区：</li>
+<li>堆(类实例，java垃圾收集器)</li>
+<li>方法区(常量入”this is the string”,常量池)</li>
+<li>虚拟机栈(方法调用栈)</li>
+<li>本地方法栈</li>
+<li>程序计数器</li>
+</ul>
+<p><em>前两个线程公用</em></p>
+<p><a href="https://www.cnblogs.com/zhanglei93/p/6590609.html" target="_blank" rel="noopener">JVM 参考</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/2018-03-06-spring-IoC-AOP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/2018-03-06-spring-IoC-AOP/" itemprop="url">spring-IoC-AOP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T00:00:00+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="spring-IoC-DI"><a href="#spring-IoC-DI" class="headerlink" title="spring-IoC/DI"></a>spring-IoC/DI</h3><p>IoC(Inversion of Control)控制反转，IoC不是一种技术，本身是一种思想。想要理解IoC，首先需要理解两个词，Control(控制)和Inversion(反转)。</p>
+<h4 id="Control-控制"><a href="#Control-控制" class="headerlink" title="Control(控制)"></a>Control(控制)</h4><p>什么是控制？以代码为例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class BookController &#123;</span><br><span class="line"></span><br><span class="line">    //@AutoWired</span><br><span class="line">    private BookService bookService;</span><br><span class="line">    public BookController()&#123;</span><br><span class="line">        this.bookService = new BookService();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @ResponseBody</span><br><span class="line">    @RequestMapping(value = &quot;bookIds&quot;,method = RequestMethod.GET)</span><br><span class="line">    public List&lt;Book&gt; bookIds()&#123;</span><br><span class="line">        List&lt;Book&gt; list = bookService.fetchAll();</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在这段代码中，BookController需要用到BookService，因此在前者中有一个后者的实例，换句话说，BookController可以通过这个实例控制BookService，这就是控制。而从另一个角度来说，也是BookController依赖于BookService（因为没有BookService，BookController的逻辑也不能实现）。</p>
+<p>控制和依赖是共存的，控制也不局限于对另一个类的控制，还可以是文件，datasource等。</p>
+<h4 id="Inversion-反转"><a href="#Inversion-反转" class="headerlink" title="Inversion(反转)"></a>Inversion(反转)</h4><p>什么是反转？我们先考虑什么是“正转”？<br><em>注意无论是“正转”还是反转，都是相对于BookController类来说的</em><br>还是以上面的代码为例，上面的代码中，BookController是占主要的地位的类，BookService只是BookController的一部分，由BookController控制BookService，这可以理解为“正转”，因为这是占主导地位的类控制占次要地位的类(也可以理解为依赖类控制被依赖的类)，BookController主动new一个BookService的实例。</p>
+<p>那么反转呢？反转就是在BookController和BookService中，BookController由原来的主动new一个对象，变为被动接受一个对象。就好像说，有一个第三方，在BookController需要一个BookService的时候，马上送上一个BookService。而这个第三方，就是spring容器。</p>
+<h4 id="DI-Dependency-Injection"><a href="#DI-Dependency-Injection" class="headerlink" title="DI(Dependency Injection)"></a>DI(Dependency Injection)</h4><p>依赖注入其实就是IoC的另一种说法。我们还是从两个方面来说什么是依赖注入。<br>什么是依赖：IoC控制的另一种说法，可以参考第一点<br>什么是注入：IoC容器给BookController送上一个BookService实例即可以视为注入。</p>
+<h3 id="AOP-Aspect-Oriented-Programming"><a href="#AOP-Aspect-Oriented-Programming" class="headerlink" title="AOP(Aspect-Oriented Programming)"></a>AOP(Aspect-Oriented Programming)</h3><h4 id="概念理解，和OOP对比。"><a href="#概念理解，和OOP对比。" class="headerlink" title="概念理解，和OOP对比。"></a>概念理解，和OOP对比。</h4><p>AOP面向切面编程。面向对象编程的核心是对象，一切皆对象，同样的，面向切面编程，核心是切面。想要理解什么是AOP，首先需要理解切面。</p>
+<p><em>什么是切面?</em></p>
+<p>OOP要求我们把功能分散到单独的类中去，做到一个类做一件事。但是当许多类都分散开来的时候，也会增加类的复杂性。一个例子就是：如果所有的类都有一个打印日志的操作，要么在每个类中重复一段打印日志的代码（重复代码）；要不就是所有需要打印日志的类都依赖于一个log类（会增加所有这些类对于log类的依赖，重复逻辑）。如何才能去掉这些重复代码呢？AOP就是用来解决这个问题的，将log的方法视作一个切面，所有log操作只需要通过AOP织入即可，代码只需要写一份。<br><em>切面就是上面的log</em></p>
+<p>所谓的面向切面编程，就是根据切面，在代码的适当位置（切入点）动态的插入适当的代码让其运行。</p>
+<blockquote>
+<p>AOP:如果你有一个函数要测时间，那你就在函数开始和结束的地方各打一个时间戳，然后计算打印就行了。但如果你有一批函数，你要每个函数都这么干的话，明天老板说该上线了把debug代码都去掉怎么办，明天CTO说控制台输出太low了要改成发短信怎么办。所以你需要在一个统一的地方写这些东西。AOP就是通过配置，让符合某种条件的函数在开始和结束的时候都执行你规定的逻辑。 –摘抄自知乎</p>
+</blockquote>
+<p><a href="https://www.zhihu.com/question/24863332" target="_blank" rel="noopener">AOP理解</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Aspect(切面):从所有类中横向找出的共同逻辑</span><br><span class="line">Join point(连接点):从程序中找出的可以拦截点(spring中只可以是method，不能是构造器) </span><br><span class="line">Advice: 需要动态插入的逻辑代码（有after，before，around等多种）</span><br><span class="line">Pointcut: 切入点，可以理解为找出来的特定的连接点，Advice在只能在Pointcut中被插入。</span><br></pre></td></tr></table></figure>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>ExampleController类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.example.demo.web;</span><br><span class="line"></span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class Example &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;/&quot;)</span><br><span class="line">    public String home() &#123;</span><br><span class="line">        return &quot;Hello World!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Aspect类:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">package com.example.demo.Aop;</span><br><span class="line"></span><br><span class="line">import org.aspectj.lang.JoinPoint;</span><br><span class="line">import org.aspectj.lang.ProceedingJoinPoint;</span><br><span class="line">import org.aspectj.lang.annotation.*;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import org.springframework.web.context.request.RequestContextHolder;</span><br><span class="line">import org.springframework.web.context.request.ServletRequestAttributes;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">@Aspect</span><br><span class="line">@Component</span><br><span class="line">public class WebLogAspect &#123;</span><br><span class="line">    protected static org.slf4j.Logger logger = LoggerFactory.getLogger(WebLogAspect.class);</span><br><span class="line"></span><br><span class="line">//    @Pointcut(&quot;execution(public * com.example.demo..*.*(..))&quot;)</span><br><span class="line">    @Pointcut(&quot;execution(public * com.example.demo.web.Example.home(..))&quot;)</span><br><span class="line">    public void webLog() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Before(&quot;webLog()&quot;)</span><br><span class="line">    public void doBefore(JoinPoint joinPoint) throws Throwable &#123;</span><br><span class="line">        System.out.println( &quot;进入doBefore切面&quot;);</span><br><span class="line">        // 接收到请求，记录请求内容</span><br><span class="line">        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();</span><br><span class="line">        HttpServletRequest request = attributes.getRequest();</span><br><span class="line"></span><br><span class="line">        // 记录下请求内容</span><br><span class="line">        logger.info(&quot;URL : &quot; + request.getRequestURL().toString());</span><br><span class="line">        logger.info(&quot;HTTP_METHOD : &quot; + request.getMethod());</span><br><span class="line">        logger.info(&quot;IP : &quot; + request.getRemoteAddr());</span><br><span class="line">        logger.info(&quot;CLASS_METHOD : &quot; + joinPoint.getSignature().getDeclaringTypeName() + &quot;.&quot; + joinPoint.getSignature().getName());</span><br><span class="line">        logger.info(&quot;ARGS : &quot; + Arrays.toString(joinPoint.getArgs()));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Around(&quot;webLog()&quot;)</span><br><span class="line">    public Object around(ProceedingJoinPoint joinPoint) throws Throwable&#123;</span><br><span class="line">        System.out.println( &quot;around the aspect&quot;);</span><br><span class="line">        Object o = joinPoint.proceed();</span><br><span class="line">        System.out.println( &quot;around the aspect1&quot;);</span><br><span class="line">        return o;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @AfterReturning(returning = &quot;ret&quot;, pointcut = &quot;webLog()&quot;)</span><br><span class="line">    public void doAfterReturning(Object ret) throws Throwable &#123;</span><br><span class="line">        // 处理完请求，返回内容</span><br><span class="line">        logger.info(&quot;RESPONSE : &quot; + ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">around the aspect</span><br><span class="line">进入doBefore切面</span><br><span class="line">2018-03-07 16:23:54.237  INFO 22622 --- [nio-8888-exec-1] com.example.demo.Aop.WebLogAspect        : URL : http://localhost:8888/</span><br><span class="line">2018-03-07 16:23:54.238  INFO 22622 --- [nio-8888-exec-1] com.example.demo.Aop.WebLogAspect        : HTTP_METHOD : GET</span><br><span class="line">2018-03-07 16:23:54.238  INFO 22622 --- [nio-8888-exec-1] com.example.demo.Aop.WebLogAspect        : IP : 127.0.0.1</span><br><span class="line">2018-03-07 16:23:54.239  INFO 22622 --- [nio-8888-exec-1] com.example.demo.Aop.WebLogAspect        : CLASS_METHOD : com.example.demo.web.Example.home</span><br><span class="line">2018-03-07 16:23:54.239  INFO 22622 --- [nio-8888-exec-1] com.example.demo.Aop.WebLogAspect        : ARGS : []</span><br><span class="line">around the aspect1</span><br></pre></td></tr></table></figure></p>
+<p>可见执行顺序是:<br>Around的ProceedingJoinPoint.proceed()前的方法，Before方法，被织入的方法，Around的proceed之后的方法，After执行，然后是AfterReturing方法。</p>
+<p>除了@Around外，每个方法里都可以加或者不加参数JoinPoint，如果有用JoinPoint的地方就加，不加也可以，JoinPoint里包含了类名、被切面的方法名，参数等属性，可供读取使用。@Around参数必须为ProceedingJoinPoint，pjp.proceed相应于执行被切面的方法。@AfterReturning方法里，可以加returning = “XXX”，XXX即为在controller里方法的返回值。</p>
+<p>当出现异常的时候，情况比较复杂，分有没有around方法讨论，因为如果有around则around当中理因处理该Exception，如果没有处理，则该exception会抛出到上一层，然后强行结束该around的advice，接着执行After方法，然后是afterthrowing方法。如果around执行了异常处理，那么afterthrow不会执行。</p>
+<p>总结：around在before之前，after（所有类别after方法）之前执行。<br>afterreturing和afterthrowing在after之后执行。<br>[TODO poingcut的语句编写 AOP通过代理实现的原理]<br><a href="https://www.cnblogs.com/bigben0123/p/7779357.html" target="_blank" rel="noopener">详细用法参考</a></p>
+<h2 id="spring启动的顺序"><a href="#spring启动的顺序" class="headerlink" title="spring启动的顺序"></a>spring启动的顺序</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/2018-03-06-随手/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tbxsx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/2018-03-06-随手/" itemprop="url">常用代码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T00:00:00+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="mvn"><a href="#mvn" class="headerlink" title="mvn"></a>mvn</h3><p>使用mvn生成spring boot项目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mvn clean</span><br><span class="line">mvn build</span><br><span class="line">mvn install</span><br><span class="line">mvn package</span><br><span class="line">mvn test</span><br><span class="line">mvn compile</span><br></pre></td></tr></table></figure>
+<h3 id="usr的权限问题"><a href="#usr的权限问题" class="headerlink" title="/usr的权限问题"></a>/usr的权限问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al /usr</span><br><span class="line">drwsr-xr-x  11 root root  4096 3月   8 10:30 .</span><br><span class="line">drwxr-xr-x  25 root root  4096 3月   6 15:55 ..</span><br><span class="line">drwsr-xr-x   2 root root 69632 3月   8 11:45 bin</span><br><span class="line">drwsr-xr-x   2 root root  4096 11月 30 22:46 games</span><br><span class="line">drwsr-xr-x  67 root root 20480 2月  28 15:20 include</span><br><span class="line">drwsr-xr-x 176 root root 12288 3月   6 16:16 lib</span><br><span class="line">drwsr-xr-x  11 root root  4096 11月  3 10:24 local</span><br><span class="line">drwsr-xr-x   3 root root  4096 7月  20  2016 locale</span><br><span class="line">drwsr-xr-x   2 root root 12288 3月   8 11:45 sbin</span><br><span class="line">drwsr-xr-x 363 root root 12288 3月   6 16:16 share</span><br><span class="line">drwsr-xr-x   7 root root  4096 3月   8 11:46 src</span><br></pre></td></tr></table></figure>
+<p>昨天一不小心将整个/usr权限改为777了，导致WiFi不能连接，sudo不能运行。也是醉了。</p>
+<ol>
+<li>sudo不能运行的原因。<br>/usr/bin/sudo 的权限设置错误。<br>进入su -<br>然后修改其权限:<br>chown root:root sudo #修改为root组的root用户<br>chmod 4755 sudo #修改权限<br>之后再进入/usr/lib/sudo/<br>chown root:root sudoers.so<br>chmod 4755 sudo<br>到此sudo 能够运行了。</li>
+<li><p>启动Soft update出错<br>主要是/usr/lib/dbus-1.0/dbus-daemon-lauch-helper权限设置出错。<br>改为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwsr-xr-- 1 root messagebus ....</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于/usr目录下的其他软件<br>sudo chmod -R 755 *</p>
+</li>
+<li><p>有可能/var/log/cups的文件不断增大，甚至可能是到达几十G，这有可能是/usr/lib/cups/notifier/dbus权限设置不对(具体的可以看cups的error_log文件)，正确的权限是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x  1 daemon root 14328 2月  20 01:51 dbus</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>修改好就可以了。</p>
+<ol start="4">
+<li>重启，没有问题了</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -390,7 +1848,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -398,6 +1856,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
